@@ -142,6 +142,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .field h3 { font-size: 13px; color: var(--ink-2); font-weight: 600; margin-bottom: 4px; }
 .field p { font-size: 15px; line-height: 1.65; }
 .field.repair { margin-top: 4px; padding: 14px; border: 0; border-radius: 14px; background: rgba(238,154,44,0.14); }
+.field.teacher { margin-top: 4px; padding: 12px 14px; border: 1px dashed var(--hairline); border-radius: 14px; }
+.field.teacher h3 { color: var(--teal); }
 .todo { color: var(--ink-3); }
 .todo::before { content: "⚠️待填　"; color: var(--amber); font-size: 12px; }
 .verify { color: var(--ink-3); font-size: 13px; }
@@ -235,7 +237,7 @@ body.shot .shot-exit { display: block; }
   <div><i style="background:var(--amber)"></i>修理站</div>
   <div><i style="background:var(--teal)"></i>線索島</div>
   <div><i style="background:#cfd6da"></i>One More 島（雲）</div>
-  <div class="note">主島取玉里所在的花東縱谷：西側中央山脈、東側海岸山脈、秀姑巒溪向北流。線索島方位為示意，⚠️待查證後依實際方位擺放。</div>
+  <div class="note">主島取玉里所在的花東縱谷：西側中央山脈、東側海岸山脈、秀姑巒溪向北流。線索島的位置是示意，不代表實際方位。</div>
 </div>
 
 <nav class="dock" aria-label="視角">
@@ -3347,7 +3349,7 @@ var ISLAND = {
     { key: "toolHelp", label: "工具怎麼幫忙" },
     { key: "outcome",  label: "學習成果" },
     { key: "check",    label: "成果檢核" },
-    { key: "prep",     label: "備課準備" },
+    { key: "prep",     label: "備課準備", teacher: true },   // 只在老師模式顯示（網址加 #teacher）
     { key: "planB",    label: "無設備備案" }
   ],
   repairQuestion: "這是我的，還是 AI 改的？",
@@ -3395,7 +3397,7 @@ var ISLAND = {
     ]
   },
 
-  /* 站卡內容：草稿 v0.1，待林老師審。來源見各站 src；⚠️ 為未定或待實測。 */
+  /* 站卡內容：林老師 11/15 審過、11/16 定為第一版。src（內容依據）與 prep（備課準備）只在老師模式顯示；⚠️ 為未定或待實測，只出現在老師模式。 */
   stations: [
     { id: "gacha",  no: 1, name: "扭蛋港",   step: "定錨／Look 再看一眼", tag: "Look", icon: "capsule", links: ["gacha"],
       tools: [{ n: "相機" }, { n: "放大鏡" }, { n: "測距儀" }, { n: "地圖" }],
@@ -3405,7 +3407,7 @@ var ISLAND = {
         toolHelp: "相機拍下、放大鏡看細部、測距儀量尺寸、地圖標位置：iPad 內建工具把「看」變成留得下來的證據。扭蛋機把生活線索、個性、小麻煩抽成三顆扭蛋，幫不知道從哪開始的人起手。好奇之眼用「看見／想到／好奇」三格整理觀察。",
         outcome: "一則有依據的觀察（照片或地圖位置，加一句說明），和一張扭蛋角色卡（名字、造型想法、還想找的線索）。放進 Pages「地方觀察」頁。",
         check: "說得出這個細節在哪裡、怎麼知道的；角色卡上至少有一個詞來自自己的觀察，不只靠扭蛋。",
-        prep: "已核對來源的玉里照片與地圖；扭蛋機先試玩一次（⚠️ Arcade 尚未生成與試玩）；好奇之眼詞語列（⚠️ T04 待完成）。",
+        prep: "已核對來源的玉里照片與地圖；扭蛋機先在「One More 遊樂場」Padlet 試玩一次；好奇之眼詞語列（⚠️ T04 待完成）。",
         planB: "紙條抽籤＋手寫角色卡；印出照片與地圖，用筆圈出細節。",
         repair: "這個細節是我自己看到、查到的，還是扭蛋或 AI 給的？"
       },
@@ -3419,9 +3421,9 @@ var ISLAND = {
         toolHelp: "無邊記把照片、地圖和草圖排在同一張白板，看清楚線索怎麼變成造型。Procreate 可以放照片描繪、分圖層、開「參考」視窗對照。",
         outcome: "一張 Procreate 角色草圖或線稿（角色本體和背景分圖層），一張角色身分證（外型、故事、能力、屬性）。草圖貼上 Padlet 牆。",
         check: "指得出角色身上哪個特徵來自哪一則觀察；角色和背景分在不同圖層，之後能匯出去背 PNG。",
-        prep: "iPad 已裝 Procreate；Padlet 牆與 QR Code；一張無邊記示範白板。⚠️ 畫布尺寸與筆刷包待定。",
+        prep: "iPad 已裝 Procreate；Padlet 牆與 QR Code；一張無邊記示範白板。⚠️ 畫布尺寸與筆刷包待定；⚠️ 能否描 AI 圖待定，見 Q05。",
         planB: "紙筆畫在身分證紙卡上，拍照後再傳。Padlet 連不上時先存相簿，恢復連線再貼。",
-        repair: "這條線是從我的觀察長出來的，還是照著別人的圖畫的？（⚠️ 能否描 AI 圖待定，見 Q05）"
+        repair: "這條線是從我的觀察長出來的，還是照著別人的圖畫的？"
       },
       src: "大綱 PDF 第三、四節；A04 Look → Line；DECISIONS 11/13" },
 
@@ -3595,6 +3597,8 @@ function shotMode(on) {
 }
 var world = null;
 var panel = document.getElementById("panel");
+/* 老師模式：網址結尾加 #teacher（或 ?teacher）才顯示備課準備與內容依據；學生掃 QR 進來看不到。 */
+var TEACHER = location.hash === "#teacher" || /(^|[?&])teacher(=|&|$)/.test(location.search.slice(1));
 
 function toolChips(tools) {
   return '<div class="chip-row">' + tools.map(function (t) {
@@ -3630,9 +3634,9 @@ function openPanel(id) {
     K.textContent = "作品旅程・第 " + st.no + " 站"; K.style.color = "var(--vermilion)";
     T.textContent = st.name; S.textContent = st.step;
     html += tasksHtml(st.id) + toolChips(st.tools) + '<div class="feature">' + st.feature + "</div>" + linkButtons(st.links);
-    ISLAND.cardFields.forEach(function (f) { html += fieldHtml(f.label, st.card[f.key]); });
+    ISLAND.cardFields.forEach(function (f) { if (!f.teacher || TEACHER) html += fieldHtml(f.label + (f.teacher ? "（老師模式）" : ""), st.card[f.key], f.teacher ? "teacher" : ""); });
     html += fieldHtml("修理站問題", st.card.repair, "repair");
-    if (st.src) html += '<p class="src">草稿 v0.1・待林老師審｜依據：' + st.src + "</p>";
+    if (st.src && TEACHER) html += '<p class="src">老師模式｜內容依據：' + st.src + "</p>";
     var idx = st.no - 1;
     html += '<div class="nav-row"><button id="prevBtn"' + (idx === 0 ? " disabled" : "") + '>← ' + (idx > 0 ? ISLAND.stations[idx - 1].name : "") + '</button>' +
             '<button id="nextBtn"' + (idx === 5 ? " disabled" : "") + '>' + (idx < 5 ? ISLAND.stations[idx + 1].name : "") + ' →</button></div>';
@@ -5139,6 +5143,7 @@ renderStamps();
 </html>
 <!--
 變更紀錄
+- v0.3.1｜2026-11-23｜Claude（Claude Code）｜以正式 main 5dd0074 為基準，移植 11/19 老師模式：主島六站的「備課準備」與內容依據只在網址加 #teacher 時顯示；拿掉學生畫面的「草稿 v0.1・待林老師審」、手繪工坊修理站問題後的 Q05 註記與圖例的待查證字樣；扭蛋港備課改指向 One More 遊樂場 Padlet。外圍六島、票券、升島規則不變。
 - v0.3｜2026-11-16｜Claude（Claude Code）｜音樂改走「AI 寫詞 → GarageBand 自己做歌 → 和老師示範的 AI 版對照」：改寫魔法森林、動態劇場、燈塔放映的卡片說明（學生端歌曲生成器只產歌詞）。任務不變。
 - v0.2｜2026-11-14｜Claude（Claude Code）｜改為 Three.js 3D（沿用零點群島引擎）；主島為花東縱谷地形（中央山脈、海岸山脈、秀姑巒溪北流成瀑布、谷底稻田），六站環谷、兩座朱紅拱橋、修理站路標、瞭望台、Padlet 港口飛船與作品牆、渡船飛船繞島、六座線索島（方位示意待查證）、One More 雲島。卡片內容沿用 v0.1。集章存在本機瀏覽器。
 -->
