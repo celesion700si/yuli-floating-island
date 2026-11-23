@@ -4612,7 +4612,7 @@ renderStamps();
 .clue-form{--clue-ink:#245d49;color:#293f38;line-height:1.7}.clue-form fieldset{border:1px solid #c5d8cd;border-radius:16px;padding:16px;margin:20px 0}.clue-form legend{font-weight:750;color:var(--clue-ink)}.clue-form label{display:block;font-size:14px;margin:12px 0}.clue-form textarea,.clue-form select{display:block;width:100%;box-sizing:border-box;border:1px solid #8a9e94;border-radius:9px;background:white;padding:10px;color:#243b32;font:inherit;margin-top:6px}.clue-form textarea{min-height:90px;resize:vertical}.clue-form :focus-visible,.clue-modal :focus-visible,.clue-entry:focus-visible{outline:3px solid #ed9b2d;outline-offset:3px}.clue-form input[type=checkbox]{width:20px;height:20px;vertical-align:middle;margin-right:6px}.clue-form button,.clue-modal button,.clue-modal a.clue-action{padding:12px 16px;border-radius:24px;background:var(--clue-ink,#245d49);color:white;font:inherit;margin:6px 6px 6px 0;min-height:44px;cursor:pointer;text-decoration:none;display:inline-block}.clue-form .clue-secondary,.clue-modal .clue-secondary{background:#e3e9e1;color:#28483a}.clue-note{background:#f1eedf;padding:12px;border-radius:12px;font-size:14px;color:#465444}.clue-source{background:#f8faf4;border:1px solid #d6dfd2;padding:14px;border-radius:12px;margin:10px 0}.clue-source strong{display:block;color:var(--clue-ink)}.clue-source p{margin:8px 0}.clue-form a{color:#205c69;text-decoration:underline;overflow-wrap:anywhere}.clue-modal{position:fixed;inset:0;z-index:1000;background:rgba(12,35,27,.78);overflow:auto;padding:24px;box-sizing:border-box;display:none}.clue-modal.is-open{display:block}.clue-modal-inner{--clue-ink:#245d49;max-width:740px;margin:auto;background:#f6f3e7;color:#253e34;padding:24px;border-radius:22px;box-sizing:border-box}.clue-modal canvas.proof{display:block;width:auto;max-width:100%;max-height:65vh;height:auto;margin:auto;border-radius:10px;animation:clue-press .4s ease-out}.clue-modal h2{font-size:28px;margin:8px 0}.clue-modal p{font-size:15px;line-height:1.65}.clue-modal details{margin:12px 0;padding:10px;background:#fffdf5;border-radius:10px}.clue-modal summary{cursor:pointer;font-weight:700}.clue-passport-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0}.clue-passport-grid button{background:#fffdf5;color:#28483a;border:1px solid #cbd5c9;border-radius:16px;margin:0;padding:10px;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:14px}.clue-passport-grid canvas{width:100%;height:auto;max-width:150px}.clue-passport-grid small{font-size:12px}.clue-entry{position:fixed;left:16px;bottom:108px;z-index:21;background:#f6f3e7;color:#245d49;border:1px solid #9bbba8;border-radius:24px;padding:11px 16px;min-height:44px;font:inherit;cursor:pointer;box-shadow:0 3px 15px #1232}.clue-progress{display:flex;gap:6px;flex-wrap:wrap;font-size:13px;margin:14px 0}.clue-progress span{padding:4px 10px;border-radius:20px;background:#edf1e8}.clue-progress .done{background:#d5e8ce;color:#245d49}.clue-form .clue-error{border-left:4px solid #8a4f1a}.clue-modal-inner .clue-export-status{font-size:13px;color:#4a594b}.clue-form .clue-footnote{font-size:12px;color:#606d63}
 @keyframes clue-press{from{transform:scale(1.05);opacity:.3}to{transform:scale(1);opacity:1}}@media(prefers-reduced-motion:reduce){.clue-modal canvas.proof{animation:none}}@media(max-width:600px){.clue-modal{padding:8px}.clue-modal-inner{padding:16px}.clue-modal h2{font-size:23px}.clue-passport-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.clue-entry{font-size:12px;bottom:78px;left:10px;padding:9px 13px}.clue-form fieldset{padding:12px}}
 </style>
-<button class="clue-entry" id="clueEntry" aria-haspopup="dialog">探索護照 · 0 / 6</button>
+<button class="clue-entry" id="clueEntry" aria-haspopup="dialog">外圍探索護照 · 0 / 6</button>
 <div class="clue-modal" id="clueModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="clueModalTitle"><div class="clue-modal-inner" id="clueModalBody"></div></div>
 <script id="clueConfig" type="application/json">
 [
@@ -4657,7 +4657,7 @@ renderStamps();
   function save(id) { try{localStorage.setItem(key(id),JSON.stringify(records[id]));storageFailed[id]=false;}catch(e){storageFailed[id]=true;} updateProgress(); }
   function escapeHtml(value) { return String(value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];}); }
   function updateProgress() {
-    document.getElementById('clueEntry').textContent='探索護照 · '+count()+' / 6';
+    document.getElementById('clueEntry').textContent='外圍探索護照 · '+count()+' / 6';
     islands.forEach(function(c){
       var labels=document.querySelectorAll('.pill[data-id="'+c.id+'"]');
       for(var i=0;i<labels.length;i++) { labels[i].setAttribute('aria-label',c.name+'・線索島'+(complete(c.id)?'・已有探索章':'')); }
@@ -4698,7 +4698,7 @@ renderStamps();
       '<label>理由與尚待確認之處<textarea id="clue-reason" maxlength="240" placeholder="'+escapeHtml(c.reason)+'"></textarea></label><p>「仍待確認」也能完成。重點是說明比對過程，而不是猜答案。</p></fieldset>'+
       '<fieldset><legend>03 留證｜把依據帶走</legend><label>來源／證據位置<textarea id="clue-evidence" maxlength="240" placeholder="例如：本頁'+escapeHtml(c.sources[0].label)+'、'+escapeHtml(c.sources[1].label)+'；指出你使用哪一段。"></textarea></label><label><input id="clue-kept" type="checkbox">我已留下來源與理由，知道這些是測試資料</label></fieldset>'+
       '<p id="clueStoreNote" role="status"></p><p id="clueRequired" class="clue-note" role="status" aria-live="polite"></p>'+
-      '<button id="clueGenerate" aria-describedby="clueRequired">產生我的島嶼探索證明</button><button id="cluePassport" class="clue-secondary">查看六島探索護照</button>'+
+      '<button id="clueGenerate" aria-describedby="clueRequired">產生我的島嶼探索證明</button><button id="cluePassport" class="clue-secondary">查看外圍六島探索護照</button>'+
       '<p class="clue-footnote">探索章獨立記錄，不影響作品旅程章與升島。各欄最多 240 字；不需填姓名、帳號或上傳檔案。</p>'+
       '<details><summary>再往真實世界查一步</summary><p>'+escapeHtml(c.next)+'</p><p>以下是延伸查證入口，需連網；它不是上方虛構資料卡的來源。斷網時，先用本頁資料完成練習，連網後再核對官方資料。</p><p><a href="'+escapeHtml(c.reference.url)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(c.reference.label)+' ↗</a></p>'+(c.note?'<p class="clue-note">⚠️'+escapeHtml(c.note)+'</p>':'')+'</details></div>';
     textFields.forEach(function(k){var el=document.getElementById('clue-'+k);el.value=records[c.id][k]||'';function changed(){records[c.id][k]=el.value.slice(0,maxLength);records[c.id].at=null;save(c.id);updateForm();}el.addEventListener('input',changed);el.addEventListener('change',changed);});
@@ -4708,7 +4708,8 @@ renderStamps();
     updateForm();
   }
   var originalOpen=openPanel;
-  openPanel=function(id){ originalOpen(id); var c=config(id);if(c)mount(c);else currentId=null; };
+  function openTaskPanel(id) { originalOpen(id);var c=config(id);if(c)mount(c);else currentId=null; }
+  openPanel=function(id){openTaskPanel(id);if(config(id)&&complete(id))showProof(id);};
   function showModal(title,html,mode) {
     if(!modal.classList.contains('is-open'))lastFocus=document.activeElement;
     modalMode=mode;modalBody.innerHTML='<h2 id="clueModalTitle">'+escapeHtml(title)+'</h2>'+html;
@@ -4723,7 +4724,7 @@ renderStamps();
   }
   function showPassport() {
     modalBody.style.setProperty('--clue-ink','#245d49');
-    showModal('六島探索護照','<p>自由選一座開始。這是六座線索島的探索章，與主島創作章分開；不用集滿才升島。</p><p id="passportCount">探索章 '+count()+' / 6 · 練習版</p><div class="clue-passport-grid">'+islands.map(function(c){return '<button data-clue="'+c.id+'" aria-label="'+escapeHtml(c.name)+(complete(c.id)?'，已完成，查看證明':'，開始探索')+'"><canvas width="300" height="300" aria-hidden="true"></canvas><b>'+escapeHtml(c.name)+'</b><small>'+(complete(c.id)?'✓ 已完成・查看證明':'開始探索・'+c.skill)+'</small></button>';}).join('')+'</div><p class="clue-note">所有任務均使用虛構測試資料。探索章代表完成查證練習，不是館方認證或事實核可。</p><button id="clueModalClose">返回浮空島</button>','passport');
+    showModal('外圍六島探索護照','<p>自由選一座開始。這是六座線索島的探索章，與主島創作章分開；不用集滿才升島。</p><p id="passportCount">探索章 '+count()+' / 6 · 練習版</p><div class="clue-passport-grid">'+islands.map(function(c){return '<button data-clue="'+c.id+'" aria-label="'+escapeHtml(c.name)+(complete(c.id)?'，已完成，查看證明':'，開始探索')+'"><canvas width="300" height="300" aria-hidden="true"></canvas><b>'+escapeHtml(c.name)+'</b><small>'+(complete(c.id)?'✓ 已完成・查看證明':'開始探索・'+c.skill)+'</small></button>';}).join('')+'</div><p class="clue-note">所有任務均使用虛構測試資料。探索章代表完成查證練習，不是館方認證或事實核可。</p><button id="clueModalClose">返回浮空島</button>','passport');
     var buttons=modalBody.querySelectorAll('[data-clue]');
     for(var i=0;i<buttons.length;i++)(function(b){var c=config(b.getAttribute('data-clue'));drawStamp(b.querySelector('canvas').getContext('2d'),c,150,150,135,complete(c.id));b.onclick=function(){if(complete(c.id))showProof(c.id);else{dismiss(false);document.getElementById('intro').classList.remove('is-open');openPanel(c.id);document.getElementById('pClose').focus({preventScroll:true});}};})(buttons[i]);
     document.getElementById('clueModalClose').onclick=function(){dismiss(true);};
@@ -4764,12 +4765,12 @@ renderStamps();
   function showProof(id) {
     if(!complete(id))return;
     var c=config(id),d=records[id];
-    showModal(c.name+'｜探索證明','<canvas class="proof" id="clueCanvas" width="1200" height="1600" role="img" aria-label="'+escapeHtml(c.name)+'探索證明，完整文字可於下方展開閱讀"></canvas><p>這張卡記錄你完成三步驟，不代表結論已被查核認證。</p><button id="clueDownload">儲存印章圖片 PNG</button><button id="clueProofPassport" class="clue-secondary">查看六島護照</button><button id="clueReturn" class="clue-secondary">返回浮空島</button><p id="clueExport" class="clue-export-status" role="status" aria-live="polite">可直接截圖；PNG 包含完整紀錄。</p><details><summary>閱讀完整紀錄與修改</summary>'+proofRows(c,d).map(function(r){return '<p><strong>'+escapeHtml(r[0])+'</strong><br>'+escapeHtml(r[1])+'</p>';}).join('')+'<button id="clueEdit">回到這座島修改</button></details>','proof');
+    showModal(c.name+'｜探索證明','<canvas class="proof" id="clueCanvas" width="1200" height="1600" role="img" aria-label="'+escapeHtml(c.name)+'探索證明，完整文字可於下方展開閱讀"></canvas><p>這張卡記錄你完成三步驟，不代表結論已被查核認證。</p><button id="clueDownload">儲存印章圖片 PNG</button><button id="clueEdit" class="clue-secondary">修改本島紀錄</button><button id="clueProofPassport" class="clue-secondary">外圍六島護照（總覽）</button><button id="clueReturn" class="clue-secondary">返回浮空島</button><p id="clueExport" class="clue-export-status" role="status" aria-live="polite">可直接截圖；PNG 包含完整紀錄。</p><details><summary>閱讀完整紀錄與修改</summary>'+proofRows(c,d).map(function(r){return '<p><strong>'+escapeHtml(r[0])+'</strong><br>'+escapeHtml(r[1])+'</p>';}).join('')+'</details>','proof');
     modalBody.style.setProperty('--clue-ink',c.ink);drawProof(document.getElementById('clueCanvas'),c,d);
     document.getElementById('clueDownload').onclick=function(){download(id);};
     document.getElementById('clueProofPassport').onclick=showPassport;
     document.getElementById('clueReturn').onclick=function(){dismiss(false);closePanel();document.getElementById('clueEntry').focus({preventScroll:true});};
-    document.getElementById('clueEdit').onclick=function(){dismiss(false);openPanel(id);document.getElementById('pClose').focus({preventScroll:true});};
+    document.getElementById('clueEdit').onclick=function(){dismiss(false);openTaskPanel(id);document.getElementById('pClose').focus({preventScroll:true});};
   }
   function download(id) {
     var c=config(id),status=document.getElementById('clueExport');
@@ -4785,6 +4786,7 @@ renderStamps();
 </script>
 <!--
 變更紀錄
+- v1.1｜2026-11-23｜Codex｜第一階段以黑熊卡架構統一外圍六島，完成後點島直接查看獨立圖卡；主島護照留第二階段。
 - v1.0｜2026-11-23｜Codex｜六座線索島探索查證留證、六種專屬章、探索護照與 PNG；保留黑熊測試紀錄，不改主島與 3D。
 -->
 
