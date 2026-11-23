@@ -3359,7 +3359,7 @@ var ISLAND = {
     hard:   { title: "角色今天有點難",   label: "玩一局",     url: "https://arcade.padlet.com/game/ZrXGv24GK7" },
     repair: { title: "AI 草稿修理所",    label: "進修理所",   url: "https://arcade.padlet.com/game/wrW67yokKl" },
     magic:  { title: "MagicSchool 學生 Room・生圖請用 iMac", label: "進 MagicSchool Room", url: "https://student.magicschool.ai/s/join?joinCode=TCm68Q" },  // 學校與家長同意已確認（Q04）
-    line:   { title: "手繪工坊 Padlet 牆", label: "開啟 Padlet 牆", url: "https://padlet.com/red_pig/2026-11-s025h94zwoltcfqxeft1" },
+    line:   { title: "作品港「第一筆」欄", label: "貼第一筆", url: "https://padlet.com/red_pig/one-more-2026-11-27-s025h94ikpzezyzaocrl" },
     board:  { title: "作品策展 Padlet",  label: "開啟 Padlet", url: "https://padlet.com/red_pig/one-more-2026-11-s025h94ikpzezyzaocrl" }
   },
 
@@ -3413,13 +3413,13 @@ var ISLAND = {
 
     { id: "draw",   no: 2, name: "手繪工坊", step: "Line 再畫一筆", tag: "Line", icon: "brush", links: ["line"],
       tools: [{ n: "Procreate" }, { n: "無邊記" }],
-      feature: "連出一面 Padlet 牆",
+      feature: "連到作品港「第一筆」欄",
       card: {
         goal: "把扭蛋港帶來的觀察，轉成角色的形狀、材質或配件，畫下第一筆。",
         toolHelp: "無邊記把照片、地圖和草圖排在同一張白板，看清楚線索怎麼變成造型。Procreate 可以放照片描繪、分圖層、開「參考」視窗對照。",
-        outcome: "一張 Procreate 角色草圖或線稿（角色本體和背景分圖層），一張角色身分證（外型、故事、能力、屬性）。草圖貼上 Padlet 牆。",
+        outcome: "一張 Procreate 角色草圖或線稿（角色本體和背景分圖層），一張角色身分證（外型、故事、能力、屬性）。草圖貼上作品港的「第一筆」欄。",
         check: "指得出角色身上哪個特徵來自哪一則觀察；角色和背景分在不同圖層，之後能匯出去背 PNG。",
-        prep: "iPad 已裝 Procreate；Padlet 牆與 QR Code；一張無邊記示範白板。⚠️ 畫布尺寸與筆刷包待定；⚠️ 能否描 AI 圖待定，見 Q05。",
+        prep: "iPad 已裝 Procreate；作品港 QR Code（「第一筆」欄）；一張無邊記示範白板。⚠️ 畫布尺寸與筆刷包待定；⚠️ 能否描 AI 圖待定，見 Q05。",
         planB: "紙筆畫在身分證紙卡上，拍照後再傳。Padlet 連不上時先存相簿，恢復連線再貼。",
         repair: "這條線是從我的觀察長出來的，還是照著別人的圖畫的？"
       },
@@ -5138,6 +5138,7 @@ renderStamps();
 </html>
 <!--
 變更紀錄
+- v0.3.2｜2026-11-23｜Claude（Claude Code）｜以正式 main d2d00bf 為基準，「玉里角色的第一筆」Padlet 併入作品港：手繪工坊站的 Padlet 按鈕改連作品港（新增「第一筆」欄），站卡文字同步。其他不變。
 - v0.3.1｜2026-11-23｜Claude（Claude Code）｜以正式 main 5dd0074 為基準，主島六站的「備課準備」與內容依據不再顯示於網站（林老師 11/23 決定不需要老師模式，備課清單另存）；拿掉學生畫面的「草稿 v0.1・待林老師審」、手繪工坊修理站問題後的 Q05 註記與圖例的待查證字樣；扭蛋港備課改指向 One More 遊樂場 Padlet。外圍六島、票券、升島規則不變。
 - v0.3｜2026-11-16｜Claude（Claude Code）｜音樂改走「AI 寫詞 → GarageBand 自己做歌 → 和老師示範的 AI 版對照」：改寫魔法森林、動態劇場、燈塔放映的卡片說明（學生端歌曲生成器只產歌詞）。任務不變。
 - v0.2｜2026-11-14｜Claude（Claude Code）｜改為 Three.js 3D（沿用零點群島引擎）；主島為花東縱谷地形（中央山脈、海岸山脈、秀姑巒溪北流成瀑布、谷底稻田），六站環谷、兩座朱紅拱橋、修理站路標、瞭望台、Padlet 港口飛船與作品牆、渡船飛船繞島、六座線索島（方位示意待查證）、One More 雲島。卡片內容沿用 v0.1。集章存在本機瀏覽器。
