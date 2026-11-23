@@ -4608,6 +4608,462 @@ renderStamps();
   document.getElementById("bTop").onclick = function () { world.topView(); };
 })();
 </script>
+<style>
+.clue-form{--clue-ink:#245d49;color:#293f38;line-height:1.7}.clue-form fieldset{border:1px solid #c5d8cd;border-radius:16px;padding:16px;margin:20px 0}.clue-form legend{font-weight:750;color:var(--clue-ink)}.clue-form label{display:block;font-size:14px;margin:12px 0}.clue-form textarea,.clue-form select{display:block;width:100%;box-sizing:border-box;border:1px solid #8a9e94;border-radius:9px;background:white;padding:10px;color:#243b32;font:inherit;margin-top:6px}.clue-form textarea{min-height:90px;resize:vertical}.clue-form :focus-visible,.clue-modal :focus-visible,.clue-entry:focus-visible{outline:3px solid #ed9b2d;outline-offset:3px}.clue-form input[type=checkbox]{width:20px;height:20px;vertical-align:middle;margin-right:6px}.clue-form button,.clue-modal button,.clue-modal a.clue-action{padding:12px 16px;border-radius:24px;background:var(--clue-ink,#245d49);color:white;font:inherit;margin:6px 6px 6px 0;min-height:44px;cursor:pointer;text-decoration:none;display:inline-block}.clue-form .clue-secondary,.clue-modal .clue-secondary{background:#e3e9e1;color:#28483a}.clue-note{background:#f1eedf;padding:12px;border-radius:12px;font-size:14px;color:#465444}.clue-source{background:#f8faf4;border:1px solid #d6dfd2;padding:14px;border-radius:12px;margin:10px 0}.clue-source strong{display:block;color:var(--clue-ink)}.clue-source p{margin:8px 0}.clue-form a{color:#205c69;text-decoration:underline;overflow-wrap:anywhere}.clue-modal{position:fixed;inset:0;z-index:1000;background:rgba(12,35,27,.78);overflow:auto;padding:24px;box-sizing:border-box;display:none}.clue-modal.is-open{display:block}.clue-modal-inner{--clue-ink:#245d49;max-width:740px;margin:auto;background:#f6f3e7;color:#253e34;padding:24px;border-radius:22px;box-sizing:border-box}.clue-modal canvas.proof{display:block;width:auto;max-width:100%;max-height:65vh;height:auto;margin:auto;border-radius:10px;animation:clue-press .4s ease-out}.clue-modal h2{font-size:28px;margin:8px 0}.clue-modal p{font-size:15px;line-height:1.65}.clue-modal details{margin:12px 0;padding:10px;background:#fffdf5;border-radius:10px}.clue-modal summary{cursor:pointer;font-weight:700}.clue-passport-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0}.clue-passport-grid button{background:#fffdf5;color:#28483a;border:1px solid #cbd5c9;border-radius:16px;margin:0;padding:10px;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:14px}.clue-passport-grid canvas{width:100%;height:auto;max-width:150px}.clue-passport-grid small{font-size:12px}.clue-entry{position:fixed;left:16px;bottom:108px;z-index:21;background:#f6f3e7;color:#245d49;border:1px solid #9bbba8;border-radius:24px;padding:11px 16px;min-height:44px;font:inherit;cursor:pointer;box-shadow:0 3px 15px #1232}.clue-progress{display:flex;gap:6px;flex-wrap:wrap;font-size:13px;margin:14px 0}.clue-progress span{padding:4px 10px;border-radius:20px;background:#edf1e8}.clue-progress .done{background:#d5e8ce;color:#245d49}.clue-form .clue-error{border-left:4px solid #8a4f1a}.clue-modal-inner .clue-export-status{font-size:13px;color:#4a594b}.clue-form .clue-footnote{font-size:12px;color:#606d63}
+@keyframes clue-press{from{transform:scale(1.05);opacity:.3}to{transform:scale(1);opacity:1}}@media(prefers-reduced-motion:reduce){.clue-modal canvas.proof{animation:none}}@media(max-width:600px){.clue-modal{padding:8px}.clue-modal-inner{padding:16px}.clue-modal h2{font-size:23px}.clue-passport-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.clue-entry{font-size:12px;bottom:78px;left:10px;padding:9px 13px}.clue-form fieldset{padding:12px}}
+.clue-observe-board{margin:0 0 20px}.clue-eyebrow{font-size:12px;font-weight:700;color:var(--clue-ink);letter-spacing:.06em}.clue-observe-board h3{font-size:20px;line-height:1.45;margin:6px 0 12px}.clue-art svg,.clue-art-large svg{display:block;width:100%;height:auto;border-radius:16px}.clue-art{margin:10px -4px}.clue-visual-caption{font-size:12px;line-height:1.6;color:#58665d;margin:8px 0}.clue-feature-list{display:flex;gap:6px;flex-wrap:wrap}.clue-form .clue-feature{font-size:13px;padding:8px 10px;margin:0;min-height:40px;border:1px solid #bacaba}.clue-feature[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--clue-ink)}.clue-form .clue-cite{font-size:12px;padding:7px 10px}.clue-claim{padding:14px;border-radius:12px;background:#f5ecd7;border-left:4px solid #b28a40;margin:10px 0}.clue-claim p{margin:6px 0 0}.clue-source a{font-size:13px}.clue-source .clue-footnote{font-size:11px}.clue-art-large{margin:18px 0}</style>
+<button class="clue-entry" id="clueEntry" aria-haspopup="dialog">外圍探索護照 · 0 / 6</button>
+<div class="clue-modal" id="clueModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="clueModalTitle"><div class="clue-modal-inner" id="clueModalBody"></div></div>
+<script id="clueConfig" type="application/json">
+[
+  {
+    "id": "black-bear-center",
+    "name": "臺灣黑熊教育館",
+    "slug": "black_bear",
+    "ink": "#245d49",
+    "icon": "bear",
+    "stamp": "黑熊探索章",
+    "skill": "觀察胸斑，辨認證據的界線",
+    "question": "看到胸前 V 紋，就能確定是臺灣黑熊嗎？",
+    "claim": "只要熊的胸前有白色 V 紋，就能確認牠是臺灣黑熊。",
+    "sources": [
+      {
+        "label": "來源 A｜臺灣黑熊的外觀",
+        "text": "臺北市立動物園的圖鑑描述：臺灣黑熊身上是黑色毛，胸前帶白色 V 形紋。",
+        "publisher": "臺北市立動物園",
+        "url": "https://www.zoo.gov.taipei/News_Content.aspx?n=CC7DF0D6519201FD&s=EE1CEBDFBE97A545&sms=D5A439C2736D52BF",
+        "kind": "官方資料摘要"
+      },
+      {
+        "label": "來源 B｜V 紋是否獨有？",
+        "text": "台灣黑熊保育協會說明：臺灣黑熊屬亞洲黑熊的一個亞種；胸前的 V 形斑紋是亞洲黑熊共同的特徵。",
+        "publisher": "台灣黑熊保育協會",
+        "url": "https://www.taiwanbear.org.tw/fqa",
+        "kind": "官方資料摘要"
+      }
+    ],
+    "observe": "寫下圖中身體的顏色、胸前白紋的位置與形狀。",
+    "reason": "圖中可以看見……；來源 B 補充……，所以單靠……還不能確認……。",
+    "next": "哪些是玉里獨有的創意與特色？如果畫一位黑熊角色，你會保留哪個觀察特徵，再加入什麼地方線索？",
+    "reference": {
+      "label": "台灣黑熊保育協會｜教育館介紹",
+      "url": "https://www.taiwanbear.org.tw/mission/mission_show/28/31"
+    },
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 410\" role=\"img\" aria-label=\"臺灣黑熊特徵觀察示意：黑色身體、圓耳、胸前淺色 V 紋。這是重繪插圖，不是現場照片。\"><title>臺灣黑熊特徵觀察示意：黑色身體、圓耳、胸前淺色 V 紋。這是重繪插圖，不是現場照片。</title><rect width=\"640\" height=\"410\" rx=\"24\" fill=\"#eef2e6\"/><g font-family=\"sans-serif\" font-size=\"23\" fill=\"#274a40\"><path d=\"M0 325Q130 270 270 320T640 300V410H0Z\" fill=\"#d2dfc6\"/><g fill=\"#28483d\" opacity=\".35\"><path d=\"M45 310V180l-38 90h76ZM570 320V160l-44 108h88Z\"/></g><ellipse cx=\"300\" cy=\"370\" rx=\"117\" ry=\"15\" fill=\"#b5c7a8\"/><g fill=\"#242d2b\"><ellipse cx=\"297\" cy=\"260\" rx=\"90\" ry=\"108\"/><circle cx=\"244\" cy=\"104\" r=\"32\"/><circle cx=\"350\" cy=\"104\" r=\"32\"/><ellipse cx=\"298\" cy=\"153\" rx=\"81\" ry=\"72\"/><ellipse cx=\"207\" cy=\"267\" rx=\"26\" ry=\"73\" transform=\"rotate(15 207 267)\"/><ellipse cx=\"389\" cy=\"267\" rx=\"26\" ry=\"73\" transform=\"rotate(-15 389 267)\"/><ellipse cx=\"253\" cy=\"355\" rx=\"35\" ry=\"23\"/><ellipse cx=\"345\" cy=\"355\" rx=\"35\" ry=\"23\"/></g><ellipse cx=\"298\" cy=\"174\" rx=\"33\" ry=\"22\" fill=\"#6c776c\"/><ellipse cx=\"298\" cy=\"163\" rx=\"14\" ry=\"9\" fill=\"#1a2420\"/><g fill=\"#f9f6e6\"><circle cx=\"271\" cy=\"141\" r=\"5\"/><circle cx=\"325\" cy=\"141\" r=\"5\"/><path d=\"M240 224l58 31 57-31-17 31-40 25-41-25Z\"/></g><path d=\"M352 249H460\" stroke=\"#b76d2e\" stroke-width=\"3\"/><circle cx=\"351\" cy=\"249\" r=\"7\" fill=\"#b76d2e\"/><text x=\"470\" y=\"242\" font-weight=\"bold\">胸前白紋</text><text x=\"470\" y=\"274\">像什麼形狀？</text><path d=\"M242 103H145\" stroke=\"#46675a\" stroke-width=\"3\"/><text x=\"30\" y=\"92\">圓耳</text><path d=\"M224 287H137\" stroke=\"#46675a\" stroke-width=\"3\"/><text x=\"22\" y=\"281\">深色身體</text><text x=\"30\" y=\"38\" font-size=\"18\" fill=\"#5b6a5d\">形態特徵教學重繪 · 非現場照片</text></g></svg>",
+    "contentVersion": "lesson-2026-11-23-v2",
+    "updated": "2026-11-23",
+    "intro": "臺灣黑熊教育館是這次認識黑熊的入口。先觀察身體與胸前白紋，再看看這個特徵能不能單獨證明牠來自臺灣。",
+    "pictureTitle": "先看這隻熊：你注意到哪個細節？",
+    "visualCaption": "依臺北市立動物園的形態說明繪製。這是教學插圖，不是館內實景或野外照片。",
+    "features": [
+      "身體呈深色",
+      "白紋在胸前",
+      "胸前白紋像 V 字"
+    ],
+    "sourceChecked": "2026-11-23"
+  },
+  {
+    "id": "chike-mountain",
+    "name": "赤柯山",
+    "slug": "chike_mountain",
+    "ink": "#805b13",
+    "icon": "flower",
+    "stamp": "花期觀察章",
+    "skill": "對照花季公告與課程日期",
+    "question": "花季公告能證明 11/27 的現場花況嗎？",
+    "claim": "活動頁寫著 2026 赤科山金針花季，就足以證明 11/27 現場正盛開。",
+    "sources": [
+      {
+        "label": "來源 A｜2026 活動公告",
+        "text": "農業易遊網的活動頁列出「2026 赤科山金針花季」，活動地點在花蓮縣玉里鎮赤科山，公告期間為 2026/8/8 至 2026/10/11。",
+        "publisher": "農業部農村發展及水土保持署・農業易遊網",
+        "url": "https://ezgo.ardswc.gov.tw/zh-tw/event/5275/",
+        "kind": "官方資料摘要"
+      },
+      {
+        "label": "來源 B｜本次課程對照日期",
+        "text": "玉里高中本次工作坊日期為 2026/11/27。本頁未提供該日的即時花況或現場照片。",
+        "publisher": "本次課程設定；非花況資料",
+        "url": "",
+        "kind": "課程日期與資料界線"
+      }
+    ],
+    "observe": "寫下公告開始、結束日期，以及 11/27 在這段期間內還是外。",
+    "reason": "來源 A 的期間是……；本次課程是……。公告能說明……，仍不能單憑它確認……。",
+    "next": "哪些是玉里獨有的創意與特色？若讓金針花成為角色，你還想知道採收、曬製或農家生活的哪些細節？",
+    "reference": {
+      "label": "農業部農村發展及水土保持署｜赤科山",
+      "url": "https://ezgo.ardswc.gov.tw/zh-tw/spot/7171/"
+    },
+    "note": "網站原標籤沿用「赤柯山」；官方參考頁使用「赤科山」，名稱統一待老師確認。",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 410\" role=\"img\" aria-label=\"赤科山2026金針花季公告日期與11月27日課程日期對照，活動期為8月8日至10月11日，課程在其後。\"><title>赤科山2026金針花季公告日期與11月27日課程日期對照，活動期為8月8日至10月11日，課程在其後。</title><rect width=\"640\" height=\"410\" rx=\"24\" fill=\"#eef2e6\"/><g font-family=\"sans-serif\" font-size=\"23\" fill=\"#274a40\"><path d=\"M0 110Q160 40 300 115T640 95V410H0Z\" fill=\"#d5dfc7\"/><g transform=\"translate(40 20)\" stroke=\"#8c6826\" stroke-width=\"4\" fill=\"#ebbc4b\"><path d=\"M40 95V170\" fill=\"none\"/><ellipse cx=\"40\" cy=\"50\" rx=\"11\" ry=\"31\"/><ellipse cx=\"40\" cy=\"50\" rx=\"11\" ry=\"31\" transform=\"rotate(60 40 76)\"/><ellipse cx=\"40\" cy=\"50\" rx=\"11\" ry=\"31\" transform=\"rotate(120 40 76)\"/></g><rect x=\"165\" y=\"45\" width=\"425\" height=\"125\" rx=\"18\" fill=\"#fffcf1\"/><text x=\"190\" y=\"83\" font-size=\"24\" font-weight=\"bold\">2026 赤科山金針花季</text><text x=\"190\" y=\"127\" font-size=\"35\" fill=\"#865d16\">8/8 — 10/11</text><path d=\"M70 260H575\" stroke=\"#536d58\" stroke-width=\"5\"/><rect x=\"92\" y=\"244\" width=\"280\" height=\"32\" rx=\"16\" fill=\"#dda438\"/><circle cx=\"520\" cy=\"260\" r=\"12\" fill=\"#245d49\"/><text x=\"73\" y=\"320\">8/8 開始</text><text x=\"278\" y=\"320\">10/11 結束</text><text x=\"460\" y=\"320\">11/27</text><text x=\"449\" y=\"354\" font-weight=\"bold\">本次課程</text><text x=\"35\" y=\"390\" font-size=\"17\">公告日期重繪 · 不能用此圖推定當天實際花況</text></g></svg>",
+    "contentVersion": "lesson-2026-11-23-v2",
+    "updated": "2026-11-23",
+    "intro": "赤科山的金針花季是認識玉里地方產業的一條線索。這裡先提供有日期的活動資料，練習分開「公告的活動期間」與「當天的實際花況」。",
+    "pictureTitle": "把兩個日期放在同一條線上",
+    "visualCaption": "活動期間依農業易遊網 2026 活動頁整理；11/27 是本次課程日期。不是花況照片或現場回報。",
+    "features": [
+      "公告從 8/8 開始",
+      "公告在 10/11 結束",
+      "課程 11/27 在公告期間之後"
+    ],
+    "sourceChecked": "2026-11-23"
+  },
+  {
+    "id": "antong-hotspring",
+    "name": "安通溫泉",
+    "slug": "antong_hotspring",
+    "ink": "#246478",
+    "icon": "spring",
+    "stamp": "泉源追查章",
+    "skill": "看清楚泉溫數字在說什麼",
+    "question": "介紹中的 66°C，等於每一池現在的水溫嗎？",
+    "claim": "官方介紹寫泉溫 66°C，就能確認每一個泡湯池現在都是 66°C。",
+    "sources": [
+      {
+        "label": "來源 A｜觀光介紹中的泉溫",
+        "text": "花東縱谷國家風景區的安通溫泉區介紹，將泉溫記為 66°C，並介紹當地有不同型態的泡湯場所。",
+        "publisher": "交通部觀光署花東縱谷國家風景區管理處",
+        "url": "https://www.erv-nsa.gov.tw/zh-tw/attractions/detail/56",
+        "kind": "官方資料摘要"
+      },
+      {
+        "label": "來源 B｜本頁資料能說到哪裡",
+        "text": "來源 A 是景點介紹，沒有在本頁提供每一池、每一時間點的水溫實測。右欄問號只標示這項資料缺口，不是測量結果。",
+        "publisher": "本頁編輯說明；對來源 A 的使用界線",
+        "url": "",
+        "kind": "閱讀提示，非另一筆測量"
+      }
+    ],
+    "observe": "指出 66°C 的來源、它描述的對象，以及右邊尚缺的資料。",
+    "reason": "來源 A 寫的是……，來源 B 提醒缺少……；因此我對「每一池現在都是」的判斷是……。",
+    "next": "哪些是玉里獨有的創意與特色？若把溫泉化成角色，你會用蒸氣、溪流還是日式建築作為造型線索？",
+    "reference": {
+      "label": "花東縱谷國家風景區｜安通溫泉區",
+      "url": "https://www.erv-nsa.gov.tw/zh-tw/attractions/detail/56"
+    },
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 410\" role=\"img\" aria-label=\"安通溫泉資料閱讀圖：官方介紹泉溫66度，與當天各泡湯池實測溫度是不同資訊。問號表示本頁未提供實測值。\"><title>安通溫泉資料閱讀圖：官方介紹泉溫66度，與當天各泡湯池實測溫度是不同資訊。問號表示本頁未提供實測值。</title><rect width=\"640\" height=\"410\" rx=\"24\" fill=\"#eef2e6\"/><g font-family=\"sans-serif\" font-size=\"23\" fill=\"#274a40\"><rect x=\"35\" y=\"45\" width=\"260\" height=\"290\" rx=\"22\" fill=\"#dceaf0\"/><rect x=\"345\" y=\"45\" width=\"260\" height=\"290\" rx=\"22\" fill=\"#fffdf5\" stroke=\"#afc3c1\" stroke-width=\"2\"/><text x=\"60\" y=\"89\" font-weight=\"bold\">官方介紹中的泉溫</text><text x=\"71\" y=\"174\" font-size=\"64\" fill=\"#246478\">66°C</text><path d=\"M100 220q-20-22 0-45m50 45q-20-22 0-45m50 45q-20-22 0-45\" stroke=\"#507b8b\" stroke-width=\"5\" fill=\"none\"/><text x=\"70\" y=\"283\" font-size=\"20\">來源 A：安通溫泉區</text><text x=\"366\" y=\"89\" font-weight=\"bold\">某一池、某一天</text><text x=\"453\" y=\"179\" font-size=\"80\" fill=\"#5d7467\">?</text><path d=\"M390 220H565l-15 55H405Z\" fill=\"#a9ccda\"/><path d=\"M390 218q80-15 175 0\" stroke=\"#246478\" stroke-width=\"4\" fill=\"none\"/><text x=\"372\" y=\"310\" font-size=\"20\">本頁沒有當池實測值</text><text x=\"290\" y=\"207\" font-size=\"38\" fill=\"#b1792f\">≟</text><text x=\"35\" y=\"382\" font-size=\"19\">資料對照示意 · 不是現場測溫，也不表示兩處溫度相同</text></g></svg>",
+    "contentVersion": "lesson-2026-11-23-v2",
+    "updated": "2026-11-23",
+    "intro": "安通溫泉是玉里的地方線索之一。先讀觀光介紹中的泉溫，再分辨它與某一泡湯池、某一天的實測資訊有何不同。",
+    "pictureTitle": "左邊有數字，右邊為什麼是問號？",
+    "visualCaption": "左欄依花東縱谷官方介紹整理；右欄問號表示本頁沒有提供當池實測，不是另一筆虛構測量。",
+    "features": [
+      "官方介紹寫泉溫 66°C",
+      "右欄指某一池某一天",
+      "問號表示本頁未提供實測"
+    ],
+    "sourceChecked": "2026-11-23"
+  },
+  {
+    "id": "yuli-shrine",
+    "name": "玉里神社遺址",
+    "slug": "yuli_shrine",
+    "ink": "#974d36",
+    "icon": "gate",
+    "stamp": "時光尋證章",
+    "skill": "分開歷史事件與指定日期",
+    "question": "1928 與 2008，指的是同一件事嗎？",
+    "claim": "資料裡的 1928 年與 2008 年，都代表玉里神社的興建時間。",
+    "sources": [
+      {
+        "label": "來源 A｜鎮座的年代",
+        "text": "花蓮縣文化局記錄，玉里社於 1928/10/22 舉行鎮座式。這裡的年份對應一項歷史事件。",
+        "publisher": "花蓮縣文化局",
+        "url": "https://www.hccc.gov.tw/zh-tw/CulturalHeritage/Detail/17",
+        "kind": "官方資料摘要"
+      },
+      {
+        "label": "來源 B｜文化資產身分",
+        "text": "內政部的玉里社殘蹟條目列出公告日期為 2008/7/23；並記述兩座鳥居及參道階梯等遺存。此日期對應文化資產指定。",
+        "publisher": "內政部・臺灣宗教文化地圖",
+        "url": "https://taiwangods.moi.gov.tw/Religious_Culture/html/cultural/3_0011.aspx?i=282",
+        "kind": "官方資料摘要"
+      }
+    ],
+    "observe": "看見哪些構造？再把 1928 與 2008 下方的事件各寫一次。",
+    "reason": "來源 A 的 1928 指……；來源 B 的 2008 指……，因此兩個年份……。",
+    "next": "哪些是玉里獨有的創意與特色？若讓遺址說故事，你會如何呈現保存、地方記憶與不同群體的觀點？",
+    "reference": {
+      "label": "花蓮縣文化局｜玉里社殘蹟",
+      "url": "https://www.hccc.gov.tw/zh-tw/CulturalHeritage/Detail/17"
+    },
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 410\" role=\"img\" aria-label=\"玉里社殘蹟的兩座鳥居與參道概念重繪，下方區分1928年鎮座與2008年指定古蹟，不是精確場地配置圖。\"><title>玉里社殘蹟的兩座鳥居與參道概念重繪，下方區分1928年鎮座與2008年指定古蹟，不是精確場地配置圖。</title><rect width=\"640\" height=\"410\" rx=\"24\" fill=\"#eef2e6\"/><g font-family=\"sans-serif\" font-size=\"23\" fill=\"#274a40\"><path d=\"M0 265Q220 175 640 245V410H0Z\" fill=\"#d5dfcc\"/><path d=\"M200 253l130-110 130 110\" fill=\"#e6ddc5\"/><g stroke=\"#9a674f\" stroke-width=\"12\" fill=\"none\"><path d=\"M75 115q80 15 160 0M85 145H225M110 128v117M202 128v117\"/><path d=\"M330 67q65 12 130 0M340 94H450M358 79v100M432 79v100\"/></g><path d=\"M247 246l45-35m-22 51 43-34m-23 51 42-34\" stroke=\"#b1b5a2\" stroke-width=\"9\"/><text x=\"40\" y=\"41\" font-size=\"18\">兩座鳥居與參道：概念重繪，非精確配置</text><rect x=\"28\" y=\"300\" width=\"265\" height=\"85\" rx=\"15\" fill=\"#fffcf3\"/><rect x=\"345\" y=\"300\" width=\"265\" height=\"85\" rx=\"15\" fill=\"#fffcf3\"/><text x=\"52\" y=\"336\" font-size=\"29\" font-weight=\"bold\">1928</text><text x=\"52\" y=\"369\">舉行鎮座式</text><text x=\"368\" y=\"336\" font-size=\"29\" font-weight=\"bold\">2008</text><text x=\"368\" y=\"369\">指定為古蹟</text><path d=\"M302 342H332m-12-9 12 9-12 9\" stroke=\"#60715d\" stroke-width=\"3\" fill=\"none\"/></g></svg>",
+    "contentVersion": "lesson-2026-11-23-v2",
+    "updated": "2026-11-23",
+    "intro": "玉里神社遺址在官方文化資產資料中名為「玉里社殘蹟」。觀察鳥居與參道的概念圖，再把兩個年代各自對回它代表的事件。",
+    "pictureTitle": "同一個地方，兩個年份代表什麼？",
+    "visualCaption": "鳥居與參道依內政部文化資料概念重繪；1928／2008 依官方紀錄整理。不是現況照片或精確配置圖。",
+    "features": [
+      "圖中有兩座鳥居",
+      "1928 對應鎮座式",
+      "2008 對應指定古蹟"
+    ],
+    "sourceChecked": "2026-11-23"
+  },
+  {
+    "id": "plate-monument",
+    "name": "板塊紀念碑",
+    "slug": "plate_monument",
+    "ink": "#535f73",
+    "icon": "plate",
+    "stamp": "大地辨證章",
+    "skill": "觀察板塊示意與圖例",
+    "question": "概念圖能提供精確到公尺的地面界線嗎？",
+    "claim": "看這張概念圖，就能把實際地面的板塊界線精確定位到公尺。",
+    "sources": [
+      {
+        "label": "來源 A｜玉里的板塊線索",
+        "text": "花東縱谷自行車主題網介紹，玉富自行車道位在歐亞板塊與菲律賓海板塊擠壓的交界帶，並由舊鐵道改建。",
+        "publisher": "交通部觀光署花東縱谷國家風景區管理處",
+        "url": "https://theme.erv-nsa.gov.tw/bike/zh-tw/themes/yufu",
+        "kind": "官方資料摘要"
+      },
+      {
+        "label": "來源 B｜這張圖的圖例",
+        "text": "此圖為本頁依來源 A 繪製的教學示意，沒有座標與測量比例。箭頭只表達擠壓概念，不能當作現地界線位置或導航方向。",
+        "publisher": "本頁圖例；不是現地測量",
+        "url": "",
+        "kind": "示意圖使用說明"
+      }
+    ],
+    "observe": "找出兩個板塊名稱、箭頭方向，以及圖下方哪些限制提醒。",
+    "reason": "來源 A 說明……；這張圖卻沒有……，因此能幫我理解……，還不能確認……。",
+    "next": "哪些是玉里獨有的創意與特色？如果把板塊相遇化成角色或動作，你會怎樣表現擠壓與變化？",
+    "reference": {
+      "label": "交通部觀光署｜玉里鎮周邊地圖（PDF）",
+      "url": "https://www.taiwan.net.tw/att/travelCenter/4872.pdf"
+    },
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 410\" role=\"img\" aria-label=\"玉里板塊交界帶概念圖：歐亞板塊與菲律賓海板塊相向擠壓。線條是概念示意，沒有座標或測量比例尺。\"><title>玉里板塊交界帶概念圖：歐亞板塊與菲律賓海板塊相向擠壓。線條是概念示意，沒有座標或測量比例尺。</title><rect width=\"640\" height=\"410\" rx=\"24\" fill=\"#eef2e6\"/><g font-family=\"sans-serif\" font-size=\"23\" fill=\"#274a40\"><path d=\"M0 160l115-85 90 80 90-90 90 95 95-65 160 70V220H0Z\" fill=\"#a7b8a8\"/><path d=\"M0 222H640\" stroke=\"#5c7562\" stroke-width=\"8\"/><path d=\"M0 231H320l-36 128H0Z\" fill=\"#a4b9cb\"/><path d=\"M640 231H325l-37 128H640Z\" fill=\"#c4b8a0\"/><path d=\"M319 222l-36 137\" stroke=\"#9e6d3b\" stroke-width=\"4\" stroke-dasharray=\"9 7\"/><path d=\"M120 281h100m-21-18 21 18-21 18M517 281H417m21-18-21 18 21 18\" stroke=\"#475c60\" stroke-width=\"9\" fill=\"none\"/><text x=\"37\" y=\"332\" font-weight=\"bold\">歐亞板塊</text><text x=\"402\" y=\"332\" font-weight=\"bold\">菲律賓海板塊</text><rect x=\"30\" y=\"26\" width=\"580\" height=\"48\" rx=\"13\" fill=\"#fffcf5\"/><text x=\"50\" y=\"58\">玉富自行車道：位在兩個板塊的交界帶</text><text x=\"32\" y=\"393\" font-size=\"17\">教學示意，非實際剖面；箭頭不代表地理方位，沒有測量比例</text></g></svg>",
+    "contentVersion": "lesson-2026-11-23-v2",
+    "updated": "2026-11-23",
+    "intro": "玉富自行車道所在的玉里地區，是認識板塊交界帶的地方線索。這裡把官方文字化成概念圖，練習區分地質概念與精確測量位置。",
+    "pictureTitle": "箭頭、板塊名字和虛線，各在說什麼？",
+    "visualCaption": "依官方「玉富自行車道」介紹繪製概念圖。不是現地剖面或測量圖；不按比例，箭頭不代表地理方位。",
+    "features": [
+      "標出歐亞板塊與菲律賓海板塊",
+      "箭頭表現相向擠壓概念",
+      "圖中沒有比例尺與座標"
+    ],
+    "sourceChecked": "2026-11-23"
+  },
+  {
+    "id": "kecheng-bridge",
+    "name": "客城鐵橋",
+    "slug": "kecheng_bridge",
+    "ink": "#9c443a",
+    "icon": "bridge",
+    "stamp": "鐵橋觀察章",
+    "skill": "從橋的形狀追問用途",
+    "question": "它只是景觀裝飾，還是有交通用途？",
+    "claim": "客城鐵橋只是供人散步的景觀裝飾，並不是鐵路設施。",
+    "sources": [
+      {
+        "label": "來源 A｜紅橋的名稱與用途",
+        "text": "交通部觀光署開放資料以「樂樂溪橋（客城鐵橋）」為名，描述兩座紅色鋼拱橋體，並說明它支撐鐵路運輸。",
+        "publisher": "交通部觀光署・資料提供：花蓮縣政府",
+        "url": "https://media.taiwan.net.tw/en-us/portal/travel/details/attraction_376550000a_000364",
+        "kind": "官方資料摘要"
+      },
+      {
+        "label": "來源 B｜圖中能觀察的景物",
+        "text": "此教學圖依來源 A 重繪了紅色鋼拱、鐵軌與田野。它讓你辨認景觀元素；不能拿來確認現場列車、班次或開放狀態。",
+        "publisher": "本頁圖例；非即時影像",
+        "url": "",
+        "kind": "教學重繪使用說明"
+      }
+    ],
+    "observe": "找出兩座紅色鋼拱、鐵軌與田野；哪一項最能提示橋的用途？",
+    "reason": "圖中的……讓我想到……；來源 A 寫……，因此我對這個說法的判斷是……。",
+    "next": "哪些是玉里獨有的創意與特色？如果用鐵橋當角色輪廓，你會怎麼把紅色鋼骨、稻田或列車節奏轉成設計？",
+    "reference": {
+      "label": "交通部觀光署｜樂樂溪橋（客城鐵橋）",
+      "url": "https://media.taiwan.net.tw/en-us/portal/travel/details/attraction_376550000a_000364"
+    },
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 410\" role=\"img\" aria-label=\"依官方景觀描述重繪的客城鐵橋：兩座紅色鋼拱橋、鐵軌與田野。這不是現場照片，未顯示即時列車。\"><title>依官方景觀描述重繪的客城鐵橋：兩座紅色鋼拱橋、鐵軌與田野。這不是現場照片，未顯示即時列車。</title><rect width=\"640\" height=\"410\" rx=\"24\" fill=\"#eef2e6\"/><g font-family=\"sans-serif\" font-size=\"23\" fill=\"#274a40\"><rect width=\"640\" height=\"410\" rx=\"24\" fill=\"#e1edf0\"/><path d=\"M0 190l100-90 110 90 125-120 155 118 90-78 60 65v235H0Z\" fill=\"#a0b79d\"/><path d=\"M0 275q170-35 340-5t300 0v140H0Z\" fill=\"#d5d790\"/><path d=\"M0 345q220-55 640-5v70H0Z\" fill=\"#bad0bc\"/><g stroke=\"#a74335\" stroke-width=\"10\" fill=\"none\"><path d=\"M35 250H605M45 244q120-220 255 0M320 244q120-220 275 0\"/><path d=\"M65 220v28M110 170v78M160 149v99M210 170v78M265 217v31M340 218v30M389 169v79M440 148v100M490 168v80M550 212v36\" stroke-width=\"6\"/></g><path d=\"M30 260H610M30 271H610\" stroke=\"#46534b\" stroke-width=\"4\"/><path d=\"M65 280v-24m40 24v-24m40 24v-24m40 24v-24m40 24v-24m40 24v-24m40 24v-24m40 24v-24m40 24v-24m40 24v-24m40 24v-24m40 24v-24m40 24v-24\" stroke=\"#62674f\" stroke-width=\"5\"/><path d=\"M85 296v65m50-65v65m400-65v65m50-65v65\" stroke=\"#9ba870\" stroke-width=\"3\"/><rect x=\"22\" y=\"25\" width=\"595\" height=\"43\" rx=\"12\" fill=\"#fffdf5\"/><text x=\"41\" y=\"54\">紅色鋼拱 × 2 · 鐵軌 · 田野</text><text x=\"28\" y=\"392\" font-size=\"18\">依官方文字重繪 · 非現場照片，不能判斷當下有無列車</text></g></svg>",
+    "contentVersion": "lesson-2026-11-23-v2",
+    "updated": "2026-11-23",
+    "intro": "客城鐵橋在觀光資料中也稱樂樂溪橋。先觀察紅色鋼拱、鐵軌與田野如何組合，再核對這座橋的用途。",
+    "pictureTitle": "紅橋之外，還看見哪一條線索？",
+    "visualCaption": "依交通部觀光署開放資料的景觀文字重繪。不是現場照片，沒有提供即時列車、班次或通行狀態。",
+    "features": [
+      "有兩座紅色鋼拱",
+      "橋面下方畫出鐵軌",
+      "周圍有田野線條"
+    ],
+    "sourceChecked": "2026-11-23"
+  }
+]
+</script>
+<script>
+(function () {
+  'use strict';
+  var islands = JSON.parse(document.getElementById('clueConfig').textContent);
+  var records = {}, storageFailed = {}, currentId = null, lastFocus = null, modalMode = null;
+  var modal = document.getElementById('clueModal'), modalBody = document.getElementById('clueModalBody');
+  var textFields = ['observation', 'verdict', 'reason', 'evidence'];
+  var verdicts = {support:'資料支持說法', conflict:'資料有矛盾或不足以支持', unknown:'仍待確認'};
+  var maxLength = 240;
+  function config(id) { for(var i=0;i<islands.length;i++) if(islands[i].id===id) return islands[i]; return null; }
+  function key(id) { return 'oneMore.clue.'+id+'.lesson.v2'; }
+  function clean(raw) {
+    var result={v:2};
+    if (!raw || raw.v!==2) return result;
+    textFields.forEach(function(k){ if(typeof raw[k]==='string') result[k]=raw[k].slice(0,maxLength); });
+    result.explored=raw.explored===true; result.kept=raw.kept===true;
+    result.at=typeof raw.at==='number' && isFinite(raw.at) && raw.at>0 ? raw.at : null;
+    return result;
+  }
+  islands.forEach(function(c){ try { records[c.id]=clean(JSON.parse(localStorage.getItem(key(c.id)))); } catch(e) { records[c.id]=clean(null); storageFailed[c.id]=true; } });
+  function missing(d) {
+    var result=[];
+    [['observation','01 探索：寫下觀察'],['explored','01 探索：確認已看圖並讀完資料'],['verdict','02 查證：選擇判斷'],['reason','02 查證：寫下理由'],['evidence','03 留證：留下來源或證據位置'],['kept','03 留證：勾選觀察與來源確認']].forEach(function(p){
+      var v=d[p[0]], absent=p[0]==='verdict' ? !Object.prototype.hasOwnProperty.call(verdicts,v) : typeof v==='string' ? !v.trim() : !v;
+      if(absent) result.push({id:p[0],label:p[1]});
+    });
+    return result;
+  }
+  function complete(id) { return !!records[id].at && missing(records[id]).length===0; }
+  function count() { return islands.filter(function(c){return complete(c.id);}).length; }
+  function save(id) { try{localStorage.setItem(key(id),JSON.stringify(records[id]));storageFailed[id]=false;}catch(e){storageFailed[id]=true;} updateProgress(); }
+  function escapeHtml(value) { return String(value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];}); }
+  function updateProgress() {
+    document.getElementById('clueEntry').textContent='外圍探索護照 · '+count()+' / 6';
+    islands.forEach(function(c){
+      var labels=document.querySelectorAll('.pill[data-id="'+c.id+'"]');
+      for(var i=0;i<labels.length;i++) { labels[i].setAttribute('aria-label',c.name+'・線索島'+(complete(c.id)?'・已有探索章':'')); }
+    });
+  }
+  function readForm() {
+    if(!currentId) return;
+    var d=records[currentId];
+    textFields.forEach(function(k){var el=document.getElementById('clue-'+k);if(el)d[k]=el.value.slice(0,maxLength);});
+    ['explored','kept'].forEach(function(k){var el=document.getElementById('clue-'+k);if(el)d[k]=el.checked;});
+  }
+  function updateForm() {
+    if(!currentId || !document.getElementById('clueGenerate')) return;
+    var d=records[currentId], gaps=missing(d), ready=gaps.length===0;
+    var button=document.getElementById('clueGenerate'), hint=document.getElementById('clueRequired');
+    button.textContent=ready ? (complete(currentId)?'重新開啟我的探索證明':'產生我的島嶼探索證明') : '查看還缺哪一步（'+gaps.length+' 項）';
+    hint.textContent=ready?'✓ 三步驟已完成，可以產生探索證明。':'還需要完成：'+gaps.map(function(g){return g.label;}).join('；')+'。點下方按鈕可前往第一個未完成項目。';
+    hint.classList.toggle('clue-error',!ready);
+    document.getElementById('clueStoreNote').textContent=storageFailed[currentId]?'此裝置無法儲存進度，目前僅保留在這個頁面；請產生證明後匯出 PNG 或截圖。':'紀錄只存於這台裝置；換裝置不會同步。編輯後需再產生一次證明。';
+    var steps=[!!(d.explored&&d.observation&&d.observation.trim()),!!(verdicts[d.verdict]&&d.reason&&d.reason.trim()),!!(d.kept&&d.evidence&&d.evidence.trim())];
+    document.getElementById('clueSteps').innerHTML=['探索','查證','留證'].map(function(s,i){return '<span class="'+(steps[i]?'done':'')+'">'+(steps[i]?'✓ ':'')+(i+1)+' '+s+'</span>';}).join('');
+    updateProgress();
+  }
+  function sourceCards(c) {
+    return c.sources.map(function(s,i){return '<article class="clue-source"><strong>'+escapeHtml(s.label)+'</strong><p>'+escapeHtml(s.text)+'</p><p class="clue-footnote">'+escapeHtml(s.kind)+'｜'+escapeHtml(s.publisher)+(s.url?'｜整理查讀：'+c.sourceChecked:'')+'</p>'+(s.url?'<a href="'+escapeHtml(s.url)+'" target="_blank" rel="noopener noreferrer">查看原始來源 ↗</a>':'')+' <button type="button" class="clue-cite clue-secondary" data-cite="'+i+'">把這項來源記入留證欄</button></article>';}).join('');
+  }
+  function mount(c) {
+    currentId=c.id;
+    var body=document.getElementById('pBody');
+    document.getElementById('pTitle').textContent=c.name;
+    document.getElementById('pStep').textContent=c.skill;
+    body.innerHTML='<div class="clue-form" style="--clue-ink:'+c.ink+'">'+
+      '<section class="clue-observe-board" aria-label="'+escapeHtml(c.name)+'觀察材料"><p class="clue-eyebrow">先看材料，再提出判斷</p><h3>'+escapeHtml(c.pictureTitle)+'</h3><div class="clue-art">'+c.svg+'</div><p class="clue-visual-caption">'+escapeHtml(c.visualCaption)+'</p><button id="clueEnlarge" class="clue-secondary">放大觀察圖</button><p>'+escapeHtml(c.intro)+'</p></section>'+
+      '<div id="clueSteps" class="clue-progress" aria-label="本島三步驟進度"></div>'+
+      '<fieldset><legend>01 探索｜從圖中找線索</legend><p>'+escapeHtml(c.observe)+'</p><p class="clue-footnote">點下列線索可記入觀察欄，也可以自己寫：</p><div class="clue-feature-list">'+c.features.map(function(f,i){return '<button type="button" class="clue-feature clue-secondary" data-feature="'+i+'">'+escapeHtml(f)+'</button>';}).join('')+'</div><label>我注意到什麼？<textarea id="clue-observation" maxlength="240" placeholder="'+escapeHtml(c.observe)+'"></textarea></label><label><input id="clue-explored" type="checkbox">我已看過觀察圖，並讀完下方資料</label></fieldset>'+
+      '<fieldset><legend>02 查證｜用資料檢查說法</legend><h3>'+escapeHtml(c.question)+'</h3><div class="clue-claim"><strong>待你查證的說法（尚未當作事實）</strong><p>'+escapeHtml(c.claim)+'</p></div>'+sourceCards(c)+'<label>比對之後，我的判斷<select id="clue-verdict"><option value="">請選擇</option><option value="support">資料支持這個說法</option><option value="conflict">資料有矛盾或不足以支持</option><option value="unknown">仍待確認</option></select></label><label>理由與尚待確認之處<textarea id="clue-reason" maxlength="240" placeholder="'+escapeHtml(c.reason)+'"></textarea></label><p>用一個圖中細節和一項來源說明判斷。「仍待確認」也能完成，網站不評分或自動認證真偽。</p></fieldset>'+
+      '<fieldset><legend>03 留證｜把依據帶走</legend><label>來源／證據位置<textarea id="clue-evidence" maxlength="240" placeholder="例如：觀察圖的一個細節＋來源 A 或 B 的名稱與重點；可按來源卡上的記入按鈕。"></textarea></label><label><input id="clue-kept" type="checkbox">我已留下觀察與資料來源，並說明判斷理由</label></fieldset>'+
+      '<p id="clueStoreNote" role="status"></p><p id="clueRequired" class="clue-note" role="status" aria-live="polite"></p><button id="clueGenerate" aria-describedby="clueRequired">產生我的島嶼探索證明</button><button id="cluePassport" class="clue-secondary">查看外圍六島探索護照</button>'+
+      '<p class="clue-footnote">每欄最多 240 字，不需姓名或登入。探索章與主島創作章分開；圖像和摘要已隨頁保存，斷網仍可觀察與查讀。連網時可開來源查核。</p>'+
+      '<details><summary>把地方線索帶進你的創作</summary><p>'+escapeHtml(c.next)+'</p><p>AI 若提供想法，由你核對材料，決定保留哪些地方細節；可在自己的角色或作品中說明人與 AI 的分工。</p>'+(c.reference?'<a href="'+escapeHtml(c.reference.url)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(c.reference.label)+' ↗</a>':'')+(c.note?'<p class="clue-note">⚠️'+escapeHtml(c.note)+'</p>':'')+'</details></div>';
+    textFields.forEach(function(k){var el=document.getElementById('clue-'+k);el.value=records[c.id][k]||'';function changed(){records[c.id][k]=el.value.slice(0,maxLength);records[c.id].at=null;save(c.id);updateForm();}el.addEventListener('input',changed);el.addEventListener('change',changed);});
+    ['explored','kept'].forEach(function(k){var el=document.getElementById('clue-'+k);el.checked=!!records[c.id][k];el.onchange=function(){records[c.id][k]=el.checked;records[c.id].at=null;save(c.id);updateForm();};});
+    var featureButtons=body.querySelectorAll('[data-feature]');
+    for(var i=0;i<featureButtons.length;i++)featureButtons[i].onclick=function(){var f=c.features[Number(this.getAttribute('data-feature'))],el=document.getElementById('clue-observation');if(el.value.indexOf(f)<0){el.value=(el.value.trim()?el.value.trim()+'；':'')+f;el.value=el.value.slice(0,maxLength);records[c.id].observation=el.value;records[c.id].at=null;save(c.id);updateForm();}this.setAttribute('aria-pressed','true');};
+    var citeButtons=body.querySelectorAll('[data-cite]');
+    for(var j=0;j<citeButtons.length;j++)citeButtons[j].onclick=function(){var src=c.sources[Number(this.getAttribute('data-cite'))],value=src.label+'（'+src.publisher+'）',el=document.getElementById('clue-evidence');if(el.value.indexOf(value)<0){el.value=((el.value.trim()?el.value.trim()+'；':'')+value).slice(0,maxLength);records[c.id].evidence=el.value;records[c.id].at=null;save(c.id);updateForm();}this.textContent='✓ 已記入留證欄';};
+    document.getElementById('clueEnlarge').onclick=function(){showModal(c.name+'｜觀察材料','<div class="clue-art-large">'+c.svg+'</div><p>'+escapeHtml(c.visualCaption)+'</p><button id="cluePictureBack">回到任務</button>','picture');document.getElementById('cluePictureBack').onclick=function(){dismiss(true);};};
+    document.getElementById('clueGenerate').onclick=generate;
+    document.getElementById('cluePassport').onclick=showPassport;
+    updateForm();
+  }
+  var originalOpen=openPanel;
+  function openTaskPanel(id) { originalOpen(id);var c=config(id);if(c)mount(c);else currentId=null; }
+  openPanel=function(id){openTaskPanel(id);if(config(id)&&complete(id))showProof(id);};
+  function showModal(title,html,mode) {
+    if(!modal.classList.contains('is-open'))lastFocus=document.activeElement;
+    modalMode=mode;modalBody.innerHTML='<h2 id="clueModalTitle">'+escapeHtml(title)+'</h2>'+html;
+    modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');
+    var focus=modalBody.querySelector('button');if(focus)focus.focus({preventScroll:true});modal.scrollTop=0;
+  }
+  function dismiss(restore) { modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');modalMode=null;if(restore&&lastFocus&&document.documentElement.contains(lastFocus))lastFocus.focus({preventScroll:true}); }
+  function generate() {
+    readForm();updateForm();var gaps=missing(records[currentId]);
+    if(gaps.length){var el=document.getElementById('clue-'+gaps[0].id);el.scrollIntoView({block:'center',behavior:'auto'});el.focus({preventScroll:true});return;}
+    if(!records[currentId].at)records[currentId].at=Date.now();save(currentId);updateForm();showProof(currentId);
+  }
+  function showPassport() {
+    modalBody.style.setProperty('--clue-ink','#245d49');
+    showModal('外圍六島探索護照','<p>自由選一座開始。這是六座線索島的探索章，與主島創作章分開；不用集滿才升島。</p><p id="passportCount">探索章 '+count()+' / 6 · 地方觀察</p><div class="clue-passport-grid">'+islands.map(function(c){return '<button data-clue="'+c.id+'" aria-label="'+escapeHtml(c.name)+(complete(c.id)?'，已完成，查看證明':'，開始探索')+'"><canvas width="300" height="300" aria-hidden="true"></canvas><b>'+escapeHtml(c.name)+'</b><small>'+(complete(c.id)?'✓ 已完成・查看證明':'開始探索・'+c.skill)+'</small></button>';}).join('')+'</div><p class="clue-note">各島已附觀察圖與來源摘要；圖像為教學重繪，非現場照片。探索章代表你的查讀紀錄，不是官方認證。</p><button id="clueModalClose">返回浮空島</button>','passport');
+    var buttons=modalBody.querySelectorAll('[data-clue]');
+    for(var i=0;i<buttons.length;i++)(function(b){var c=config(b.getAttribute('data-clue'));drawStamp(b.querySelector('canvas').getContext('2d'),c,150,150,135,complete(c.id));b.onclick=function(){if(complete(c.id))showProof(c.id);else{dismiss(false);document.getElementById('intro').classList.remove('is-open');openPanel(c.id);document.getElementById('pClose').focus({preventScroll:true});}};})(buttons[i]);
+    document.getElementById('clueModalClose').onclick=function(){dismiss(true);};
+  }
+  document.getElementById('clueEntry').onclick=showPassport;
+  function path(g,pts,close){g.beginPath();pts.forEach(function(p,i){if(i)g.lineTo(p[0],p[1]);else g.moveTo(p[0],p[1]);});if(close)g.closePath();g.stroke();}
+  function drawIcon(g,type) {
+    g.lineWidth=8;g.lineCap='round';g.lineJoin='round';
+    if(type==='bear'){
+      g.beginPath();g.arc(-58,-35,26,0,Math.PI*2);g.arc(58,-35,26,0,Math.PI*2);g.fill();g.beginPath();g.ellipse(0,5,78,70,0,0,Math.PI*2);g.fill();g.save();g.fillStyle='#f6f3e7';g.beginPath();g.moveTo(-47,20);g.lineTo(0,52);g.lineTo(47,20);g.lineTo(37,43);g.lineTo(0,71);g.lineTo(-37,43);g.closePath();g.fill();g.beginPath();g.arc(-26,-12,5,0,Math.PI*2);g.arc(26,-12,5,0,Math.PI*2);g.fill();g.restore();
+    } else if(type==='flower') {
+      for(var j=0;j<6;j++){g.save();g.rotate(j*Math.PI/3);g.beginPath();g.ellipse(0,-40,20,43,0,0,Math.PI*2);g.stroke();g.restore();}g.beginPath();g.arc(0,0,15,0,Math.PI*2);g.fill();path(g,[[0,77],[0,100]]);path(g,[[0,92],[35,72]]);
+    } else if(type==='spring') {
+      g.beginPath();g.ellipse(0,54,85,27,0,0,Math.PI);g.stroke();path(g,[[-82,54],[82,54]]);[-43,0,43].forEach(function(x){g.beginPath();g.moveTo(x,-70);g.bezierCurveTo(x-28,-40,x+28,-20,x,16);g.stroke();});
+    } else if(type==='gate') {
+      path(g,[[-90,-65],[0,-53],[90,-65]]);path(g,[[-82,-34],[82,-34]]);path(g,[[-58,-47],[-64,85]]);path(g,[[58,-47],[64,85]]);path(g,[[-70,85],[-50,85]]);path(g,[[50,85],[70,85]]);path(g,[[0,-52],[0,-34]]);
+    } else if(type==='plate') {
+      path(g,[[-90,55],[-50,-25],[-10,25],[20,-55],[90,55]]);path(g,[[-90,65],[-10,65],[-25,90]]);path(g,[[-10,65],[-25,40]]);path(g,[[90,65],[20,65],[35,40]]);path(g,[[20,65],[35,90]]);
+    } else if(type==='bridge') {
+      path(g,[[-100,58],[100,58]]);path(g,[[-92,58],[-92,-24],[-46,-67],[0,-24],[46,-67],[92,-24],[92,58]]);path(g,[[-92,-24],[92,-24]]);[-46,0,46].forEach(function(x){path(g,[[x,-24],[x,58]]);});path(g,[[-92,58],[-46,-24],[0,58],[46,-24],[92,58]]);
+    }
+  }
+  function drawStamp(g,c,x,y,r,earned) {
+    g.save();g.translate(x,y);g.scale(r/185,r/185);g.rotate(-.055);g.strokeStyle=c.ink;g.fillStyle=c.ink;g.globalAlpha=earned?1:.42;
+    g.lineWidth=8;g.beginPath();g.arc(0,0,177,0,Math.PI*2);g.stroke();g.lineWidth=2;g.setLineDash([5,8]);g.beginPath();g.arc(0,0,164,0,Math.PI*2);g.stroke();g.setLineDash([]);
+    g.textAlign='center';g.font='bold 24px sans-serif';g.fillText('探索 · 查證 · 留證',0,-119);drawIcon(g,c.icon);g.font='bold 26px sans-serif';g.fillText(c.stamp,0,129);
+    g.save();g.fillStyle='#f6f3e7';for(var i=0;i<120;i++){var xx=Math.sin(i*91.7)*170,yy=Math.cos(i*47.3)*170;g.fillRect(xx,yy,2,3);}g.restore();g.restore();
+  }
+  function wrap(g,text,maxWidth) {var out=[],line='';Array.from(String(text)).forEach(function(ch){if(ch==='\n'||g.measureText(line+ch).width>maxWidth){out.push(line);line=ch==='\n'?'':ch;}else line+=ch;});out.push(line);return out;}
+  function proofRows(c,d){return [['這次查證的說法',c.claim],['我的觀察',d.observation],['查證結論',verdicts[d.verdict]],['理由與待確認',d.reason],['來源／證據',d.evidence]];}
+  function drawProof(canvas,c,d) {
+    var g=canvas.getContext('2d');g.font='26px sans-serif';
+    var rows=proofRows(c,d),n=rows.reduce(function(sum,r){return sum+wrap(g,r[1],1044).length;},0);
+    canvas.height=Math.max(1600,930+n*36+rows.length*64+120);g=canvas.getContext('2d');
+    g.fillStyle='#f6f3e7';g.fillRect(0,0,canvas.width,canvas.height);g.strokeStyle=c.ink;g.lineWidth=3;g.strokeRect(36,36,1128,canvas.height-72);g.fillStyle=c.ink;g.textAlign='center';g.font='22px sans-serif';g.fillText('ONE MORE FIELD LAB · FIELD NOTES',600,106);g.font='bold 53px sans-serif';g.fillText(c.name,600,183);g.font='30px sans-serif';g.fillText('島嶼探索證明',600,243);drawStamp(g,c,600,485,185,true);g.font='bold 28px sans-serif';g.fillText('探索 ✓     查證 ✓     留證 ✓',600,725);g.fillStyle='#765b27';g.font='bold 25px sans-serif';g.fillText('地方資料查讀｜個人探索紀錄・非官方認證',600,785);g.textAlign='left';g.fillStyle=c.ink;g.font='22px sans-serif';g.fillText('完成時間：'+new Date(d.at).toLocaleString('zh-TW',{timeZone:'Asia/Taipei',hour12:false})+'（臺灣）',78,845);
+    var y=910;rows.forEach(function(pair){g.font='bold 26px sans-serif';g.fillText(pair[0],78,y);y+=36;g.font='26px sans-serif';wrap(g,pair[1],1044).forEach(function(line){g.fillText(line,78,y);y+=36;});y+=28;});g.font='21px sans-serif';g.fillText('線索島探索章 · 與作品旅程章分開 · 不觸發升島',78,canvas.height-75);
+  }
+  function showProof(id) {
+    if(!complete(id))return;
+    var c=config(id),d=records[id];
+    showModal(c.name+'｜探索證明','<canvas class="proof" id="clueCanvas" width="1200" height="1600" role="img" aria-label="'+escapeHtml(c.name)+'探索證明，完整文字可於下方展開閱讀"></canvas><p>這張卡記錄你完成三步驟，不代表結論已被查核認證。</p><button id="clueDownload">儲存印章圖片 PNG</button><button id="clueEdit" class="clue-secondary">修改本島紀錄</button><button id="clueProofPassport" class="clue-secondary">外圍六島護照（總覽）</button><button id="clueReturn" class="clue-secondary">返回浮空島</button><p id="clueExport" class="clue-export-status" role="status" aria-live="polite">可直接截圖；PNG 包含完整紀錄。</p><details><summary>閱讀完整紀錄與修改</summary>'+proofRows(c,d).map(function(r){return '<p><strong>'+escapeHtml(r[0])+'</strong><br>'+escapeHtml(r[1])+'</p>';}).join('')+'</details>','proof');
+    modalBody.style.setProperty('--clue-ink',c.ink);drawProof(document.getElementById('clueCanvas'),c,d);
+    document.getElementById('clueDownload').onclick=function(){download(id);};
+    document.getElementById('clueProofPassport').onclick=showPassport;
+    document.getElementById('clueReturn').onclick=function(){dismiss(false);closePanel();document.getElementById('clueEntry').focus({preventScroll:true});};
+    document.getElementById('clueEdit').onclick=function(){dismiss(false);openTaskPanel(id);document.getElementById('pClose').focus({preventScroll:true});};
+  }
+  function download(id) {
+    var c=config(id),status=document.getElementById('clueExport');
+    try{var url=document.getElementById('clueCanvas').toDataURL('image/png');if(url.indexOf('data:image/png')!==0)throw new Error('PNG unavailable');var a=document.createElement('a');a.href=url;a.download='one_more_'+c.slug+'_field_notes.png';document.body.appendChild(a);a.click();a.remove();status.textContent='已送出 PNG 儲存請求；若裝置未儲存，請直接截圖。';}catch(e){status.textContent='此裝置無法匯出 PNG，請直接截圖保存。';}
+  }
+  modal.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){e.stopPropagation();dismiss(true);return;}
+    if(e.key==='Tab'){var all=Array.prototype.filter.call(modalBody.querySelectorAll('button,a,summary'),function(el){return el.getClientRects().length>0&&!el.disabled;}),first=all[0],last=all[all.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}
+  });
+  // 護照與完成卡共用同一個視窗，保留原有主島與升島進度。
+  updateProgress();
+})();
+</script>
+<!--
+變更紀錄
+- v2.0｜2026-11-23｜Codex｜補六島具體觀察圖、官方來源摘要與地方提問，淘汰虛構佔位；教材進度另存以免承接舊測試完成章。
+- v1.1｜2026-11-23｜Codex｜第一階段以黑熊卡架構統一外圍六島，完成後點島直接查看獨立圖卡；主島護照留第二階段。
+- v1.0｜2026-11-23｜Codex｜六座線索島探索查證留證、六種專屬章、探索護照與 PNG；保留黑熊測試紀錄，不改主島與 3D。
+-->
+
 </body>
 </html>
 <!--
