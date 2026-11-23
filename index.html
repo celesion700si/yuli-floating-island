@@ -3360,7 +3360,7 @@ var ISLAND = {
     repair: { title: "AI 草稿修理所",    label: "進修理所",   url: "https://arcade.padlet.com/game/wrW67yokKl" },
     magic:  { title: "MagicSchool 學生 Room・生圖請用 iMac", label: "進 MagicSchool Room", url: "https://student.magicschool.ai/s/join?joinCode=TCm68Q" },  // 學校與家長同意已確認（Q04）
     line:   { title: "作品港「第一筆」欄", label: "貼第一筆", url: "https://padlet.com/red_pig/one-more-2026-11-27-s025h94ikpzezyzaocrl" },
-    board:  { title: "作品策展 Padlet",  label: "開啟 Padlet", url: "https://padlet.com/red_pig/one-more-2026-11-s025h94ikpzezyzaocrl" }
+    board:  { title: "One More 港口｜玉里角色作品港", label: "進作品港", url: "https://padlet.com/red_pig/one-more-2026-11-27-s025h94ikpzezyzaocrl" }
   },
 
   /* 升島門檻：完成幾項任務後 One More 島升起。1＝完成一項即升島（林老師 11/15 定案）；改成 3 即為累積制。 */
@@ -3487,7 +3487,7 @@ var ISLAND = {
       desc: "島中央高處，大家一起抬頭看的地方。",
       tools: [{ n: "Gemini Omni／Google Vids", cond: "未滿 18 歲不能使用" }, { n: "Firefly", cond: "裝置端・M 系列晶片" }, { n: "物件擷取" }, { n: "Figma Weave" }] },
     { id: "port", name: "Padlet 港口", kind: "facility", links: ["board"],
-      desc: "所有作品停靠處。", tools: [{ n: "Padlet", cond: "需連網" }] },
+      desc: "所有作品停靠處。One More 遊樂場、AI 影片生成紀錄的入口也在港口裡。", tools: [{ n: "Padlet", cond: "需連網" }] },
     { id: "ferry", name: "渡船航線", kind: "facility",
       desc: "AirDrop，串起每一站與 iPad ↔ iMac。", tools: [{ n: "AirDrop" }] },
     { id: "transit", name: "其他生態系交通", kind: "facility",
@@ -5138,6 +5138,7 @@ renderStamps();
 </html>
 <!--
 變更紀錄
+- v0.3.3｜2026-11-23｜Claude（Claude Code）｜作品港成為總入口：Padlet 港口按鈕改名「One More 港口｜玉里角色作品港」並用新網址；港口說明補「遊樂場、AI 影片生成紀錄的入口也在港口裡」。其他不變。
 - v0.3.2｜2026-11-23｜Claude（Claude Code）｜以正式 main d2d00bf 為基準，「玉里角色的第一筆」Padlet 併入作品港：手繪工坊站的 Padlet 按鈕改連作品港（新增「第一筆」欄），站卡文字同步。其他不變。
 - v0.3.1｜2026-11-23｜Claude（Claude Code）｜以正式 main 5dd0074 為基準，主島六站的「備課準備」與內容依據不再顯示於網站（林老師 11/23 決定不需要老師模式，備課清單另存）；拿掉學生畫面的「草稿 v0.1・待林老師審」、手繪工坊修理站問題後的 Q05 註記與圖例的待查證字樣；扭蛋港備課改指向 One More 遊樂場 Padlet。外圍六島、票券、升島規則不變。
 - v0.3｜2026-11-16｜Claude（Claude Code）｜音樂改走「AI 寫詞 → GarageBand 自己做歌 → 和老師示範的 AI 版對照」：改寫魔法森林、動態劇場、燈塔放映的卡片說明（學生端歌曲生成器只產歌詞）。任務不變。
