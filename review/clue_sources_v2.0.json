@@ -1,0 +1,140 @@
+[
+  {
+    "id": "black-bear-center",
+    "name": "臺灣黑熊教育館",
+    "claim": "只要熊的胸前有白色 V 紋，就能確認牠是臺灣黑熊。",
+    "sources": [
+      {
+        "label": "來源 A｜臺灣黑熊的外觀",
+        "text": "臺北市立動物園的圖鑑描述：臺灣黑熊身上是黑色毛，胸前帶白色 V 形紋。",
+        "publisher": "臺北市立動物園",
+        "url": "https://www.zoo.gov.taipei/News_Content.aspx?n=CC7DF0D6519201FD&s=EE1CEBDFBE97A545&sms=D5A439C2736D52BF",
+        "kind": "官方資料摘要"
+      },
+      {
+        "label": "來源 B｜V 紋是否獨有？",
+        "text": "台灣黑熊保育協會說明：臺灣黑熊屬亞洲黑熊的一個亞種；胸前的 V 形斑紋是亞洲黑熊共同的特徵。",
+        "publisher": "台灣黑熊保育協會",
+        "url": "https://www.taiwanbear.org.tw/fqa",
+        "kind": "官方資料摘要"
+      }
+    ],
+    "visualCaption": "依臺北市立動物園的形態說明繪製。這是教學插圖，不是館內實景或野外照片。",
+    "sourceChecked": "2026-11-23"
+  },
+  {
+    "id": "chike-mountain",
+    "name": "赤柯山",
+    "claim": "活動頁寫著 2026 赤科山金針花季，就足以證明 11/27 現場正盛開。",
+    "sources": [
+      {
+        "label": "來源 A｜2026 活動公告",
+        "text": "農業易遊網的活動頁列出「2026 赤科山金針花季」，活動地點在花蓮縣玉里鎮赤科山，公告期間為 2026/8/8 至 2026/10/11。",
+        "publisher": "農業部農村發展及水土保持署・農業易遊網",
+        "url": "https://ezgo.ardswc.gov.tw/zh-tw/event/5275/",
+        "kind": "官方資料摘要"
+      },
+      {
+        "label": "來源 B｜本次課程對照日期",
+        "text": "玉里高中本次工作坊日期為 2026/11/27。本頁未提供該日的即時花況或現場照片。",
+        "publisher": "本次課程設定；非花況資料",
+        "url": "",
+        "kind": "課程日期與資料界線"
+      }
+    ],
+    "visualCaption": "活動期間依農業易遊網 2026 活動頁整理；11/27 是本次課程日期。不是花況照片或現場回報。",
+    "sourceChecked": "2026-11-23"
+  },
+  {
+    "id": "antong-hotspring",
+    "name": "安通溫泉",
+    "claim": "官方介紹寫泉溫 66°C，就能確認每一個泡湯池現在都是 66°C。",
+    "sources": [
+      {
+        "label": "來源 A｜觀光介紹中的泉溫",
+        "text": "花東縱谷國家風景區的安通溫泉區介紹，將泉溫記為 66°C，並介紹當地有不同型態的泡湯場所。",
+        "publisher": "交通部觀光署花東縱谷國家風景區管理處",
+        "url": "https://www.erv-nsa.gov.tw/zh-tw/attractions/detail/56",
+        "kind": "官方資料摘要"
+      },
+      {
+        "label": "來源 B｜本頁資料能說到哪裡",
+        "text": "來源 A 是景點介紹，沒有在本頁提供每一池、每一時間點的水溫實測。右欄問號只標示這項資料缺口，不是測量結果。",
+        "publisher": "本頁編輯說明；對來源 A 的使用界線",
+        "url": "",
+        "kind": "閱讀提示，非另一筆測量"
+      }
+    ],
+    "visualCaption": "左欄依花東縱谷官方介紹整理；右欄問號表示本頁沒有提供當池實測，不是另一筆虛構測量。",
+    "sourceChecked": "2026-11-23"
+  },
+  {
+    "id": "yuli-shrine",
+    "name": "玉里神社遺址",
+    "claim": "資料裡的 1928 年與 2008 年，都代表玉里神社的興建時間。",
+    "sources": [
+      {
+        "label": "來源 A｜鎮座的年代",
+        "text": "花蓮縣文化局記錄，玉里社於 1928/10/22 舉行鎮座式。這裡的年份對應一項歷史事件。",
+        "publisher": "花蓮縣文化局",
+        "url": "https://www.hccc.gov.tw/zh-tw/CulturalHeritage/Detail/17",
+        "kind": "官方資料摘要"
+      },
+      {
+        "label": "來源 B｜文化資產身分",
+        "text": "內政部的玉里社殘蹟條目列出公告日期為 2008/7/23；並記述兩座鳥居及參道階梯等遺存。此日期對應文化資產指定。",
+        "publisher": "內政部・臺灣宗教文化地圖",
+        "url": "https://taiwangods.moi.gov.tw/Religious_Culture/html/cultural/3_0011.aspx?i=282",
+        "kind": "官方資料摘要"
+      }
+    ],
+    "visualCaption": "鳥居與參道依內政部文化資料概念重繪；1928／2008 依官方紀錄整理。不是現況照片或精確配置圖。",
+    "sourceChecked": "2026-11-23"
+  },
+  {
+    "id": "plate-monument",
+    "name": "板塊紀念碑",
+    "claim": "看這張概念圖，就能把實際地面的板塊界線精確定位到公尺。",
+    "sources": [
+      {
+        "label": "來源 A｜玉里的板塊線索",
+        "text": "花東縱谷自行車主題網介紹，玉富自行車道位在歐亞板塊與菲律賓海板塊擠壓的交界帶，並由舊鐵道改建。",
+        "publisher": "交通部觀光署花東縱谷國家風景區管理處",
+        "url": "https://theme.erv-nsa.gov.tw/bike/zh-tw/themes/yufu",
+        "kind": "官方資料摘要"
+      },
+      {
+        "label": "來源 B｜這張圖的圖例",
+        "text": "此圖為本頁依來源 A 繪製的教學示意，沒有座標與測量比例。箭頭只表達擠壓概念，不能當作現地界線位置或導航方向。",
+        "publisher": "本頁圖例；不是現地測量",
+        "url": "",
+        "kind": "示意圖使用說明"
+      }
+    ],
+    "visualCaption": "依官方「玉富自行車道」介紹繪製概念圖。不是現地剖面或測量圖；不按比例，箭頭不代表地理方位。",
+    "sourceChecked": "2026-11-23"
+  },
+  {
+    "id": "kecheng-bridge",
+    "name": "客城鐵橋",
+    "claim": "客城鐵橋只是供人散步的景觀裝飾，並不是鐵路設施。",
+    "sources": [
+      {
+        "label": "來源 A｜紅橋的名稱與用途",
+        "text": "交通部觀光署開放資料以「樂樂溪橋（客城鐵橋）」為名，描述兩座紅色鋼拱橋體，並說明它支撐鐵路運輸。",
+        "publisher": "交通部觀光署・資料提供：花蓮縣政府",
+        "url": "https://media.taiwan.net.tw/en-us/portal/travel/details/attraction_376550000a_000364",
+        "kind": "官方資料摘要"
+      },
+      {
+        "label": "來源 B｜圖中能觀察的景物",
+        "text": "此教學圖依來源 A 重繪了紅色鋼拱、鐵軌與田野。它讓你辨認景觀元素；不能拿來確認現場列車、班次或開放狀態。",
+        "publisher": "本頁圖例；非即時影像",
+        "url": "",
+        "kind": "教學重繪使用說明"
+      }
+    ],
+    "visualCaption": "依交通部觀光署開放資料的景觀文字重繪。不是現場照片，沒有提供即時列車、班次或通行狀態。",
+    "sourceChecked": "2026-11-23"
+  }
+]
