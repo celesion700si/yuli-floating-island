@@ -375,7 +375,7 @@ footer {
       <div class="portal-info">
         <div class="portal-kicker">入口 02｜作品策展與互評</div>
         <h2>One More 港口（Padlet）</h2>
-        <p>貼第一筆、下載 3D 素材、看 AI 影片紀錄，並用「看見／好奇／再多一頁」互評。</p>
+        <p>找到紅白隊的四階段創作欄，發布作品、選 AI 分工標註，再欣賞另一隊作品並回饋。</p>
         <div class="portal-actions">
           <a class="mini-link" href="https://padlet.com/red_pig/one-more-2026-11-27-s025h94ikpzezyzaocrl" target="_blank" rel="noopener">進作品港 ↗</a>
           <button class="mini-link" data-open-qr="padlet">放大 QR</button>
@@ -395,6 +395,13 @@ footer {
         </div>
       </div>
     </article>
+  </section>
+
+  <section class="card" style="margin-top:16px" aria-label="紅白隊作品發表指引">
+    <h3>紅白創作｜先找到你的隊伍</h3>
+    <p>以老師面向大家時的左右手為準：老師左手邊＝A 紅隊，右手邊＝B 白隊。紅白是隊伍識別，作品顏色自由。</p>
+    <p>六站是創作旅程；作品依階段貼到自己隊伍的「第一筆 → 角色定裝 → 多模態導覽 → 動態」。先看該欄置頂任務與示範，再按＋發布，依實際創作過程選擇 AI 分工標註。做到哪裡，就分享哪裡。</p>
+    <p>「立體」與「Pages 電子書」是共用教材；完成後到「紅白成果交流」看交流引導，欣賞另一隊作品並留言。</p>
   </section>
 
   <!-- 六站與瞭望台快速切換 -->
@@ -492,7 +499,7 @@ const QR_MAP = {"island": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-
 
 const QR_META = {
   island: { name: "玉里浮空島 3D 主站", url: "https://with.ipadart.net/", hint: "掃碼登島・完成 1 項任務即升起 One More 島" },
-  padlet: { name: "One More 港口（Padlet）", url: "https://padlet.com/red_pig/one-more-2026-11-27-s025h94ikpzezyzaocrl", hint: "貼第一筆、拿 3D 素材、看 AI 影片紀錄與互評" },
+  padlet: { name: "One More 港口（Padlet）", url: "https://padlet.com/red_pig/one-more-2026-11-27-s025h94ikpzezyzaocrl", hint: "紅白隊四階段發表・共用教材・跨隊回饋" },
   magic:  { name: "MagicSchool 學生 Room", url: "https://student.magicschool.ai/s/join?joinCode=TCm68Q", hint: "加入代碼：TCm68Q（生圖請用 iMac）" },
   gacha:  { name: "故鄉角色扭蛋機", url: "https://arcade.padlet.com/game/bKRqM62zpy", hint: "扭蛋港小遊戲・抽出生活線索、個性與小麻煩" },
   repair: { name: "AI 草稿修理所", url: "https://arcade.padlet.com/game/wrW67yokKl", hint: "魔法森林小遊戲・五題畫出我和 AI 的分工圖" },
@@ -528,7 +535,7 @@ const STATIONS = [
       { n: "無邊記" }, { n: "Apple Pencil" }, { n: "作品港「第一筆」欄", cond: "需連網" }
     ],
     repair: "這條線是從我的觀察長出來的，還是照著別人的圖畫的？",
-    pages: "Pages 第 3 頁｜02 手繪工坊：貼上 Procreate／無邊記草圖（第一筆不用完美），掃 QR 碼貼到作品港「第一筆」欄，標註「我自己完成，沒有使用 AI」。",
+    pages: "Pages 第 3 頁｜02 手繪工坊：貼上 Procreate／無邊記草圖（第一筆不用完美），貼到自己隊伍的「第一筆」欄，依實際創作過程選擇 AI 分工標註。",
     planB: "在 Procreate 或無邊記畫，角色身分證寫在備忘錄；Padlet 連不上時先存相簿，恢復連線再貼。",
     qrs: ["padlet"]
   },
@@ -545,21 +552,21 @@ const STATIONS = [
       { n: "草稿修理所（Arcade）", cond: "需連網" }
     ],
     repair: "這張圖裡，哪些是我決定的，哪些是 AI 給的？AI 有沒有把我的玉里畫錯？",
-    pages: "Pages 第 4 頁｜03 魔法森林：左放手繪稿、右放 AI 版，圈出保留與拿掉處；在右側「分工光譜」拖動圓點定位我 ↔ AI。",
+    pages: "Pages 第 4 頁｜03 魔法森林：左放手繪稿、右放 AI 版，圈出保留與拿掉處；在右側「分工光譜」拖動圓點定位我 ↔ AI。修改後的角色貼到自己隊伍的「角色定裝」欄，寫下一項修改細節並選 AI 分工標註。",
     planB: "開啟相簿裡事先存好的 AI 圖與提示詞，照樣做三改與對照；分工光譜改在 Pages 第 4 頁或無邊記標位置。",
     qrs: ["magic", "repair"],
     hasSpectrum: true
   },
   {
     id: "studio3d", no: "04", name: "立體工坊", step: "2D → 3D", color: "#3c8696",
-    goal: "讓角色站起來：把手繪的輪廓和色塊，變成能在 iPad 與 Mac 上轉動的立體模型，感受 USDZ 的可能。",
+    goal: "轉動現成 USDZ，並嘗試在 Procreate 官方 3D 模型上彩繪，感受平面設計進入立體的可能。",
     tasks: [
       { id: "s1", title: "轉一轉玉里拾景", tag: "不需要 AI", tagClass: "no-ai", how: "把現成的玉里 USDZ 或小菲模型放進 Pages，兩指轉動，找出平面圖看不到的背面角度。" },
-      { id: "s2", title: "讓角色站起來", tag: "進階・建議分組", tagClass: "net", how: "把 2D 角色做成浮雕 USDZ，或在 Procreate 3D 模型上彩繪。" }
+      { id: "s2", title: "在立體模型上畫一筆", tag: "下載需連網", tagClass: "net", how: "跟著老師下載 Procreate 官方 3D 模型，匯入後嘗試彩繪；先存好模型，之後可離線操作。" }
     ],
     tools: [
-      { n: "USDZ 浮雕" }, { n: "Procreate 3D", hi: true },
-      { n: "Reality Composer" }, { n: "Sketchfab", cond: "需連網・標註來源" }
+      { n: "Procreate 3D", hi: true, cond: "官方模型下載與彩繪" }, { n: "USDZ 浮雕", cond: "延伸" },
+      { n: "Reality Composer", cond: "延伸" }, { n: "Sketchfab", cond: "延伸・需連網・標註來源" }
     ],
     repair: "這個模型是我做的、我改的，還是下載來的？來源標了嗎？",
     pages: "Pages 第 5–6 頁｜04 立體工坊＋立體素材庫：直接從第 6 頁拷貝 2D 黏土圖示或「小菲 USDZ」貼回第 5 頁展示台，比較正面與背面差異。",
@@ -570,24 +577,24 @@ const STATIONS = [
     id: "theater", no: "05", name: "動態劇場", step: "Voice／Move", color: "#d9452b",
     goal: "讓角色用自己的聲音介紹玉里，並且動起來：帶走一個會說話的角色。",
     tasks: [
-      { id: "t1", title: "錄一句角色導覽", tag: "不需要 AI", tagClass: "no-ai", how: "用語音備忘錄或 GarageBand，讓角色用 15–20 秒介紹玉里的一個地方（或把改寫後的歌詞配節奏唱／念／rap）。" },
+      { id: "t1", title: "錄一句角色導覽", tag: "不需要 AI", tagClass: "no-ai", how: "先看作品港的 One More Voice 圖卡與老師變身示範。優先用 Padlet App 錄影或錄音，讓角色在 30 秒內介紹自己；AR 特效可用可不用。也可用語音備忘錄，或用 GarageBand 配節奏唱／念／rap。" },
       { id: "t2", title: "讓角色動起來", tag: "進階・建議分組", tagClass: "net", how: "先玩「角色今天有點難」取得四格分鏡，再用 Keynote 動態或 Procreate 動畫讓角色走、跳或眨眼。" }
     ],
     tools: [
-      { n: "語音備忘錄" }, { n: "GarageBand", hi: true, cond: "鼓手／Live Loops" },
+      { n: "Padlet App", hi: true, cond: "錄影／錄音・需連網" }, { n: "語音備忘錄" }, { n: "GarageBand", hi: true, cond: "鼓手／Live Loops" },
       { n: "Keynote 動態" }, { n: "Procreate 動畫" }
     ],
     repair: "這段話（或這段歌詞）是我寫的，還是 AI 改寫的？我改掉了哪一句？",
-    pages: "Pages 第 7 頁｜05 動態劇場：把錄音或動畫拖進放映區，寫下角色怎麼動，以及 GarageBand 版與 AI 版歌曲「哪些是我做的」。",
-    planB: "Keynote、GarageBand 與語音備忘錄皆可完全離線；遊戲改由一人朗讀情境、全組用手勢選擇再畫四格。",
-    qrs: ["hard"]
+    pages: "Pages 第 7 頁｜05 動態劇場：把本機錄音或影片放回 Pages。角色介紹發布到自己隊伍的「多模態導覽」，動畫發布到「動態」；預覽後選 AI 分工標註，分批上傳。",
+    planB: "Padlet 無法直接錄影時，先用 iPad 相機錄好 30 秒內的影片；斷網先存本機，恢復連線再上傳。Keynote、GarageBand、語音備忘錄可離線；遊戲改由一人朗讀情境、全組用手勢選擇再畫四格。",
+    qrs: ["padlet", "hard"]
   },
   {
     id: "lighthouse", no: "06", name: "燈塔放映", step: "Page 翻到下一頁", color: "#d98218",
     goal: "把一路長出來的作品收進自己的 Pages 數位筆記本，再停進 Padlet 港口，和大家的作品放在一起。",
     tasks: [
       { id: "l1", title: "收進一頁 Pages", tag: "不需要 AI", tagClass: "no-ai", how: "從前五頁挑一件最想分享的作品放進第 8 頁「今天的一頁」，並完成第 9 頁「我的 One More 島」。" },
-      { id: "l2", title: "停進 Padlet 港口", tag: "需連網", tagClass: "net", how: "截圖貼上 Padlet 港口選好人機標註，並用「我看見／我好奇／如果再多一頁」給另一個人留回饋。" }
+      { id: "l2", title: "停進 Padlet 港口", tag: "需連網", tagClass: "net", how: "把想分享的 Pages 頁面匯出 PDF 或截圖，貼回作品港「Pages 電子書」欄並選 AI 分工標註。到「紅白成果交流」看交流引導，找另一隊的一件作品，在作品下留下「我看見／我好奇／如果再多一頁」回應。" }
     ],
     tools: [
       { n: "Pages 數位筆記本" }, { n: "AirDrop 渡船航線" },
@@ -612,7 +619,7 @@ const STATIONS = [
       { n: "AI 影片生成紀錄（Padlet）" }
     ],
     repair: "如果換成你的角色，你會保留哪個特徵、讓它在哪個場景動起來？",
-    pages: "對應 Padlet「入口」欄《AI 影片生成紀錄｜兩座浮空島相遇》與 Keynote 第 36–39 頁（v4 精簡上場版）示範影片。",
+    pages: "對應紅白隊「動態」欄《AI 影片生成紀錄｜兩座浮空島相遇》。Keynote v4（50 頁版）第 38–40 頁：Firefly、Flow、Gemini 示範影片；以投影片標題定位。",
     planB: "三段示範影片已預先下載於本機 Keynote 離線播放，即使斷網也能完整展示提示詞與成品對照。",
     qrs: ["padlet"]
   }
@@ -831,3 +838,4 @@ renderAll();
 </script>
 </body>
 </html>
+<!-- 變更紀錄：v0.3｜2026-11-25｜Codex｜同步紅白隊四階段、Voice 角色介紹、AI 分工標註、立體操作範圍與影片入口。 -->
