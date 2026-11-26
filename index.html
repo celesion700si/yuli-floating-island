@@ -3621,6 +3621,7 @@ function linkButtons(keys) {
 function findIn(list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return null; }
 
 function openPanel(id) {
+  if (id === "creator-toolbox") { window.open("./One-More-Field-Lab.html", "_blank", "noopener,noreferrer"); return; }
   activeId = id;
   var K = document.getElementById("pKicker"), T = document.getElementById("pTitle"),
       S = document.getElementById("pStep"), B = document.getElementById("pBody");
@@ -4259,6 +4260,32 @@ function createWorld(container) {
       '<span class="no">修</span><b>修理站</b>', "mini", 12);
   });
   placeOnMain("lookout", "lookout", -1.8, 3.2, .3, '<span class="no" style="--c:var(--teal)">望</span><b>瞭望台</b><small>一起抬頭看</small>', "mini teal", 20);
+
+  /* Creator's Toolbox: tiny iMac, independent of tasks and stamps. */
+  (function buildCreatorToolbox() {
+    var x = 4.45, z = 1.15, y = groundY(x, z);
+    var root = new THREE.Group();
+    root.position.set(x, y + .025, z);
+    root.rotation.y = Math.atan2(-36 - x, -66 - z);
+    root.add(
+      m(G.box(.34, .035, .23), "#b9d2df", [0,.018,0]),
+      m(G.box(.12, .19, .036), "#b0c8d5", [0,.12,-.025], [-.09,0,0]),
+      m(G.box(.70, .445, .014), "#a9c8dc", [0,.413,0]),
+      m(G.box(.687, .391, .004), "#f7f8f3", [0,.435,.009]),
+      m(G.box(.650, .366, .003), "#79b3ca", [0,.435,.013]),
+      m(G.box(.687, .048, .005), "#c2dce8", [0,.217,.009])
+    );
+    var art = new THREE.BufferGeometry();
+    art.setAttribute("position", new THREE.Float32BufferAttribute([-.324,.252,.016,.324,.252,.016,.324,.40,.016,-.324,.252,.016,.324,.40,.016,-.10,.47,.016],3));
+    art.computeVertexNormals();
+    root.add(new THREE.Mesh(art, new THREE.MeshBasicMaterial({color:"#c7e5df",side:THREE.DoubleSide})));
+    var hit = new THREE.Mesh(G.box(1.08, .91, .75), new THREE.MeshBasicMaterial({visible:false}));
+    hit.position.y=.43; root.add(hit); main.add(root);
+    register("creator-toolbox",root,new THREE.Vector3(x,y+.32,z),12);
+    var label = addPill(root,"creator-toolbox",new THREE.Vector3(0,1.0,0),'<span class="no">?</span><b>創作百寶箱</b>'," ",{"aria-label":"創作百寶箱（另開分頁）","title":"創作百寶箱 · 另開分頁"});
+    label.style.minHeight="44px";
+    avoid.push([x,z,.65]);
+  })();
 
   /* Padlet 港口：東南島緣的棧橋＋飛船＋作品牆 */
   (function buildPort() {
