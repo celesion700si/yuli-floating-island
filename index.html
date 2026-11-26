@@ -4282,7 +4282,7 @@ function createWorld(container) {
     var hit = new THREE.Mesh(G.box(1.08, .91, .75), new THREE.MeshBasicMaterial({visible:false}));
     hit.position.y=.43; root.add(hit); main.add(root);
     register("creator-toolbox",root,new THREE.Vector3(x,y+.32,z),12);
-    var label = addPill(root,"creator-toolbox",new THREE.Vector3(0,1.0,0),'<span class="no">?</span><b>創作百寶箱</b>'," ",{"aria-label":"創作百寶箱（另開分頁）","title":"創作百寶箱 · 另開分頁"});
+    var label = addPill(root,"creator-toolbox",new THREE.Vector3(0,2.65,0),'<span class="no">?</span><b>創作百寶箱</b>'," ",{"aria-label":"創作百寶箱（另開分頁）","title":"創作百寶箱 · 另開分頁"});
     label.style.minHeight="44px";
     avoid.push([x,z,.65]);
   })();
